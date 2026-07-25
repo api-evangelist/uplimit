@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@uplimit.com
+    name: Uplimit
+    url: https://uplimit.com
+  description: This API is used to manage organizations within the Uplimit platform. For more information, please reach out to your Uplimit Enterprise contact.
+  title: Uplimit Organization Course Platform API
+  version: 2025-08-18
+servers:
+- description: Uplimit
+  url: https://uplimit.com/api/organization/
+tags:
+- name: Platform
+paths:
+  /v1/Healthcheck:
+    get:
+      description: This API allows developers to check the health of the platform and verify that the API key provided is valid.
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_Healthcheck_get_200_response'
+          description: The platform is up and running, and the API key provided is correct.
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_Healthcheck_get_403_response'
+          description: The platform is up and running, but the API key provided is incorrect or missing.
+      security:
+      - bearerAuth: []
+      tags:
+      - Platform
+components:
+  schemas:
+    _v1_Healthcheck_get_200_response:
+      example:
+        uplimitOrganizationName: uplimitOrganizationName
+        success: true
+        uplimitOrganizationId: uplimitOrganizationId
+      properties:
+        success:
+          type: boolean
+        uplimitOrganizationId:
+          description: The Uplimit ID of the organization.
+          type: string
+        uplimitOrganizationName:
+          description: The name of the organization as it appears in Uplimit.
+          type: string
+      required:
+      - success
+      - uplimitOrganizationId
+      - uplimitOrganizationName
+    _v1_Healthcheck_get_403_response:
+      example:
+        success: true
+        error: error
+      properties:
+        success:
+          type: boolean
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+      - success
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http

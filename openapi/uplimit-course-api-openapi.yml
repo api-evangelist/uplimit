@@ -1,0 +1,319 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@uplimit.com
+    name: Uplimit
+    url: https://uplimit.com
+  description: This API is used to manage organizations within the Uplimit platform. For more information, please reach out to your Uplimit Enterprise contact.
+  title: Uplimit Organization Course API
+  version: 2025-08-18
+servers:
+- description: Uplimit
+  url: https://uplimit.com/api/organization/
+tags:
+- name: Course
+paths:
+  /v1/EnrollUserIntoCourse:
+    post:
+      description: This API allows developers to add a user into a course. The user must have already been created with the Create User API (see above) before you can add this user. In general, prefer to use the EnrollUserIntoSession API instead of this API, because that is more specific and you can specify the exact session you want to enroll the user into, instead of relying on a policy.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_v1_EnrollUserIntoCourse_post_request'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_EnrollUserIntoSession_post_200_response'
+          description: The user is enrolled into a session of the course successfully.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is invalid.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: One or more of the resources required to fulfill the request were not found.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Course
+  /v1/ListCourses:
+    get:
+      description: This API allows developers to list all courses in an organization.
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_ListCourses_get_200_response'
+          description: The list of active users is returned successfully.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is invalid.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: One or more of the resources required to fulfill the request were not found.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Course
+  /v1/ListSessionsInCourse:
+    get:
+      description: This API allows developers to list all sessions of a course.
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: uplimitCourseId
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_ListSessionsInCourse_get_200_response'
+          description: The list of sessions in the course is returned successfully.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is invalid.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: One or more of the resources required to fulfill the request were not found.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Course
+components:
+  schemas:
+    _v1_EnrollUserIntoSession_post_200_response:
+      example:
+        success: true
+      properties:
+        success:
+          type: boolean
+      required:
+      - success
+    _v1_ListCourses_get_200_response:
+      example:
+        courses:
+        - uplimitCourseDescription: uplimitCourseDescription
+          name: name
+          uplimitCourseSlug: uplimitCourseSlug
+          uplimitCourseId: uplimitCourseId
+        - uplimitCourseDescription: uplimitCourseDescription
+          name: name
+          uplimitCourseSlug: uplimitCourseSlug
+          uplimitCourseId: uplimitCourseId
+        totalCount: 0.8008281904610115
+      properties:
+        courses:
+          items:
+            $ref: '#/components/schemas/_v1_ListCourses_get_200_response_courses_inner'
+          type: array
+        totalCount:
+          type: number
+      required:
+      - courses
+      - totalCount
+    _v1_ListSessionsInCourse_get_200_response:
+      example:
+        sessions:
+        - enrollmentEnabled: true
+          name: name
+          startsAt: 2000-01-23 04:56:07+00:00
+          uplimitSessionId: uplimitSessionId
+          endsAt: 2000-01-23 04:56:07+00:00
+        - enrollmentEnabled: true
+          name: name
+          startsAt: 2000-01-23 04:56:07+00:00
+          uplimitSessionId: uplimitSessionId
+          endsAt: 2000-01-23 04:56:07+00:00
+        totalCount: 0.8008281904610115
+      properties:
+        sessions:
+          items:
+            $ref: '#/components/schemas/_v1_ListSessionsInCourse_get_200_response_sessions_inner'
+          type: array
+        totalCount:
+          type: number
+      required:
+      - sessions
+      - totalCount
+    _v1_ListSessionsInCourse_get_200_response_sessions_inner:
+      example:
+        enrollmentEnabled: true
+        name: name
+        startsAt: 2000-01-23 04:56:07+00:00
+        uplimitSessionId: uplimitSessionId
+        endsAt: 2000-01-23 04:56:07+00:00
+      properties:
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+        name:
+          description: The name of the session.
+          type: string
+        startsAt:
+          description: The start date of the session.
+          format: date-time
+          type: string
+        endsAt:
+          description: The end date of the session.
+          format: date-time
+          type: string
+        enrollmentEnabled:
+          description: Whether the session allows enrollments
+          type: boolean
+      required:
+      - endsAt
+      - enrollmentEnabled
+      - name
+      - startsAt
+      - uplimitSessionId
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+    _v1_ListCourses_get_200_response_courses_inner:
+      example:
+        uplimitCourseDescription: uplimitCourseDescription
+        name: name
+        uplimitCourseSlug: uplimitCourseSlug
+        uplimitCourseId: uplimitCourseId
+      properties:
+        uplimitCourseId:
+          description: Internal ID to identify the course across the Uplimit platform.
+          type: string
+        uplimitCourseSlug:
+          description: The slug (i.e. short name) of the course across the Uplimit platform.
+          type: string
+        uplimitCourseDescription:
+          description: The description of the course (may be empty).
+          type: string
+        name:
+          description: The name of the course.
+          type: string
+      required:
+      - name
+      - uplimitCourseDescription
+      - uplimitCourseId
+      - uplimitCourseSlug
+    _v1_EnrollUserIntoCourse_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        uplimitCourseId:
+          description: Internal ID to identify the course across the Uplimit platform.
+          type: string
+        uplimitEnrollUserIntoCourseSessionSelectionPolicy:
+          description: The policy to decide which session to enroll a user into when enrolling the user into a course.
+          enum:
+          - ENROLL_INTO_CLOSEST_SESSION_START_DATE_AFTER_TODAY_ENROLLABLE_SESSION_TIEBREAK_BY_SESSION_CREATION_DATE_ASCENDING
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within your organization. Leaving this blank will enroll the user into the default group.
+          type: string
+      required:
+      - emailAddress
+      - uplimitCourseId
+      - uplimitEnrollUserIntoCourseSessionSelectionPolicy
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http

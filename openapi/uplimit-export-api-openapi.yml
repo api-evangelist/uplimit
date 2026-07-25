@@ -1,0 +1,146 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@uplimit.com
+    name: Uplimit
+    url: https://uplimit.com
+  description: This API is used to manage organizations within the Uplimit platform. For more information, please reach out to your Uplimit Enterprise contact.
+  title: Uplimit Organization Course Export API
+  version: 2025-08-18
+servers:
+- description: Uplimit
+  url: https://uplimit.com/api/organization/
+tags:
+- name: Export
+paths:
+  /v1/GetLearnerActivity/start:
+    post:
+      description: This API starts a job to export learner activity for a given sessions. If no sessions are provided, all sessions in the course will be exported.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/_v1_GetLearnerActivity_start_post_request'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_GetLearnerActivity_start_post_200_response'
+          description: The job was started successfully.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is invalid.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: One or more of the resources required to fulfill the request were not found.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Export
+  /v1/GetLearnerActivity/get:
+    get:
+      description: This API gets the status of a job to export learner activity for a given session.
+      parameters:
+      - description: The ID of the job to get the status of.
+        explode: true
+        in: query
+        name: jobId
+        required: true
+        schema:
+          description: The ID of the job to get the status of.
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_GetLearnerActivity_get_get_200_response'
+          description: The job status was retrieved successfully.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is invalid.
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request is unauthorized.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: One or more of the resources required to fulfill the request were not found.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Export
+components:
+  schemas:
+    _v1_GetLearnerActivity_start_post_request:
+      properties:
+        sessionIds:
+          description: The IDs of the sessions to export activity for. If not provided, all sessions will be exported.
+          items:
+            type: string
+          type: array
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+    _v1_GetLearnerActivity_get_get_200_response:
+      example:
+        url: url
+      properties:
+        url:
+          description: The URL to download the exported data.
+          type: string
+      required:
+      - url
+    _v1_GetLearnerActivity_start_post_200_response:
+      example:
+        jobId: jobId
+      properties:
+        jobId:
+          description: The ID of the job that was started.
+          type: string
+      required:
+      - jobId
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http
