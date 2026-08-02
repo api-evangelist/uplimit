@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/uplimit-organization-openapi-original.yml
+name: Uplimit Organization API conventions
+authentication:
+  style: http-bearer
+  description: Every operation requires an organization API token sent as an HTTP
+    Bearer token (Authorization header). GET /v1/Healthcheck doubles as a token
+    validity check. Tokens are issued by Uplimit to Enterprise customers.
+  artifact: authentication/uplimit-authentication.yml
+idempotency:
+  supported: false
+  notes: No idempotency-key header or replay-safety contract is documented in the
+    spec. CreateUser is documented as upsert-like (creating a user whose email
+    already exists enrolls the existing user), but there is no general idempotency
+    mechanism.
+pagination:
+  style: offset
+  request_params: [skip, take]
+  response_fields: [totalCount]
+  operations:
+    - GET /v1/ListActiveUsers
+    - GET /v1/ListInactiveUsers
+    - GET /v1/ListCourses
+    - GET /v1/ListEnrollmentsInSession
+    - GET /v1/ListSessionsInCourse
+url_style:
+  description: RPC-style verb paths (e.g. /v1/CreateUser, /v1/EnrollUserIntoSession)
+    under a version prefix, rather than REST resource nouns.
+versioning:
+  scheme: uri-path + date-based info.version
+  current_path_version: v1
+  spec_version: '2025-08-18'
+async_jobs:
+  description: Bulk learner-activity export is asynchronous - POST
+    /v1/GetLearnerActivity/start returns a jobId, then GET /v1/GetLearnerActivity/get
+    is polled with jobId until it returns a download URL.
+  operations:
+    - POST /v1/GetLearnerActivity/start
+    - GET /v1/GetLearnerActivity/get
+error_envelope:
+  shape: '{ "error": "<message>" }'
+  artifact: errors/uplimit-problem-types.yml
+rate_limits:
+  documented: false
+  notes: No rate-limit headers or policy are documented in the spec or client READMEs.
+identifiers:
+  description: Uplimit internal IDs are prefixed field names (uplimitUserId,
+    uplimitCourseId, uplimitSessionId, uplimitSubscriptionEnrollmentId,
+    uplimitSubscriptionCommitmentId, uplimitSessionEnrollmentId). Users are
+    addressable by email address or uplimitUserId.
+cross_links:
+  errors: errors/uplimit-problem-types.yml
+  authentication: authentication/uplimit-authentication.yml
+  lifecycle: lifecycle/uplimit-lifecycle.yml
+  data_model: data-model/uplimit-data-model.yml

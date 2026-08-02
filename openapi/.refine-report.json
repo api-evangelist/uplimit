@@ -1,0 +1,24 @@
+{
+  "provider": "uplimit",
+  "sources": [
+    "uplimit-course-api-openapi.yml",
+    "uplimit-enrollment-api-openapi.yml",
+    "uplimit-export-api-openapi.yml",
+    "uplimit-platform-api-openapi.yml",
+    "uplimit-session-api-openapi.yml",
+    "uplimit-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "uplimit-course-api-openapi.yml",
+    "uplimit-enrollment-api-openapi.yml",
+    "uplimit-export-api-openapi.yml",
+    "uplimit-platform-api-openapi.yml",
+    "uplimit-session-api-openapi.yml",
+    "uplimit-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

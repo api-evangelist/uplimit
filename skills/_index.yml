@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: generated
+skills:
+  - file: uplimit-onboard-and-enroll-user.md
+    name: Onboard a user and enroll them into a course or session
+    api: openapi/uplimit-organization-openapi-original.yml
+    operations:
+      - POST /v1/CreateUser
+      - POST /v1/EnrollUserIntoSession
+      - POST /v1/EnrollUserIntoCourse
+      - GET /v1/GetUserInformation/{emailAddressOrUserId}
+  - file: uplimit-export-learner-activity.md
+    name: Export learner activity
+    api: openapi/uplimit-organization-openapi-original.yml
+    operations:
+      - POST /v1/GetLearnerActivity/start
+      - GET /v1/GetLearnerActivity/get
+      - GET /v1/ListEnrollmentsInSession
+  - file: uplimit-manage-user-lifecycle.md
+    name: Manage user lifecycle and SSO
+    api: openapi/uplimit-organization-openapi-original.yml
+    operations:
+      - GET /v1/ListActiveUsers
+      - GET /v1/ListInactiveUsers
+      - POST /v1/ToggleUserActivation
+      - POST /v1/UnenrollUserFromSession
+      - POST /v1/AddUserAuthenticationMethod

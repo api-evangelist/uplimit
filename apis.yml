@@ -1,8 +1,26 @@
 aid: uplimit
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/uplimit.png
 name: Uplimit
-description: 'Uplimit is a company surfaced as a portfolio company of cowboy-ventures, greylock and added
-  to the API Evangelist network as a stub for enrichment. Sector: future-of-work. This profile is a lead
-  awaiting the enrichment pipeline.'
+description: 'Uplimit (formerly CoRise, operated by Veda Education, Inc.) is an AI-native
+  corporate learning platform backed by Greylock and Cowboy Ventures. It generates
+  personalized, adaptive training programs with AI instructors, voice and visual practice
+  simulations, real-time feedback, and per-learner mastery measurement for use cases
+  like leadership training, onboarding, customer education, and sales readiness. Its
+  Organization API lets enterprise customers manage users, course and session enrollments,
+  SSO identity bindings, and learner-activity exports, with first-party generated Go,
+  Python, and TypeScript clients published on GitHub.'
 url: https://raw.githubusercontent.com/api-evangelist/uplimit/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,17 +30,143 @@ x-backed-by:
 x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Future Of Work
-apis: []
+- Learning
+- Education
+- Training
+- Artificial Intelligence
+- Corporate Training
+apis:
+- aid: uplimit:uplimit-course-api
+  name: Uplimit Course API
+  description: The Course API from Uplimit — 3 operation(s) for course.
+  humanURL: https://github.com/uplimit/api-clients
+  baseURL: https://uplimit.com/api/organization
+  tags:
+  - Course
+  properties:
+  - type: OpenAPI
+    url: openapi/uplimit-course-api-openapi.yml
+  - type: APIReference
+    url: https://github.com/uplimit/api-clients/tree/main/go-client/docs
+- aid: uplimit:uplimit-enrollment-api
+  name: Uplimit Enrollment API
+  description: The Enrollment API from Uplimit — 4 operation(s) for enrollment.
+  humanURL: https://github.com/uplimit/api-clients
+  baseURL: https://uplimit.com/api/organization
+  tags:
+  - Enrollment
+  properties:
+  - type: OpenAPI
+    url: openapi/uplimit-enrollment-api-openapi.yml
+  - type: APIReference
+    url: https://github.com/uplimit/api-clients/tree/main/go-client/docs
+- aid: uplimit:uplimit-export-api
+  name: Uplimit Export API
+  description: The Export API from Uplimit — 2 operation(s) for export.
+  humanURL: https://github.com/uplimit/api-clients
+  baseURL: https://uplimit.com/api/organization
+  tags:
+  - Export
+  properties:
+  - type: OpenAPI
+    url: openapi/uplimit-export-api-openapi.yml
+  - type: APIReference
+    url: https://github.com/uplimit/api-clients/tree/main/go-client/docs
+- aid: uplimit:uplimit-platform-api
+  name: Uplimit Platform API
+  description: The Platform API from Uplimit — 1 operation(s) for platform.
+  humanURL: https://github.com/uplimit/api-clients
+  baseURL: https://uplimit.com/api/organization
+  tags:
+  - Platform
+  properties:
+  - type: OpenAPI
+    url: openapi/uplimit-platform-api-openapi.yml
+  - type: APIReference
+    url: https://github.com/uplimit/api-clients/tree/main/go-client/docs
+- aid: uplimit:uplimit-session-api
+  name: Uplimit Session API
+  description: The Session API from Uplimit — 4 operation(s) for session.
+  humanURL: https://github.com/uplimit/api-clients
+  baseURL: https://uplimit.com/api/organization
+  tags:
+  - Session
+  properties:
+  - type: OpenAPI
+    url: openapi/uplimit-session-api-openapi.yml
+  - type: APIReference
+    url: https://github.com/uplimit/api-clients/tree/main/go-client/docs
+- aid: uplimit:uplimit-user-api
+  name: Uplimit User API
+  description: The User API from Uplimit — 10 operation(s) for user.
+  humanURL: https://github.com/uplimit/api-clients
+  baseURL: https://uplimit.com/api/organization
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/uplimit-user-api-openapi.yml
+  - type: APIReference
+    url: https://github.com/uplimit/api-clients/tree/main/go-client/docs
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/uplimit-domain-security.yml
 - type: Website
   url: https://uplimit.com
+- type: Blog
+  url: https://uplimit.com/blog
+- type: About
+  url: https://uplimit.com/about
+- type: Contact
+  url: https://uplimit.com/contact
+- type: TermsOfService
+  url: https://uplimit.com/about/terms
+- type: PrivacyPolicy
+  url: https://uplimit.com/about/privacy
+- type: Careers
+  url: https://uplimit.com/go/work-at-uplimit
+- type: GitHubOrganization
+  url: https://github.com/uplimit
+- type: Packages
+  url: packages/uplimit-packages.yml
+- type: SDKs
+  url: packages/uplimit-packages.yml
+- type: WellKnown
+  url: well-known/uplimit-well-known.yml
+- type: MCPServer
+  url: mcp/uplimit-mcp.yml
+- type: LLMsTxt
+  url: llms/uplimit-llms.txt
+- type: Overlay
+  url: overlays/uplimit-organization-overlay.yaml
+- type: Conformance
+  url: conformance/uplimit-conformance.yml
+- type: ErrorCatalog
+  url: errors/uplimit-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/uplimit-lifecycle.yml
+- type: StatusPage
+  url: https://status.uplimit.com
+- type: Authentication
+  url: authentication/uplimit-authentication.yml
+- type: Conventions
+  url: conventions/uplimit-conventions.yml
+- type: DataModel
+  url: data-model/uplimit-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml

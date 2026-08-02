@@ -1,0 +1,1683 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@uplimit.com
+    name: Uplimit
+    url: https://uplimit.com
+  description: "This API is used to manage organizations within the Uplimit platform.\
+    \ For more information, please reach out to your Uplimit Enterprise contact."
+  title: Uplimit Organization API
+  version: 2025-08-18
+servers:
+- description: Uplimit
+  url: https://uplimit.com/api/organization/
+paths:
+  /v1/CreateUser:
+    post:
+      description: "This API creates a new user account on Uplimit and enrolls the\
+        \ user into your organization. If a user account with the same email already\
+        \ exists, we will just enroll that existing user into your organization. "
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v1_CreateUser_post_request"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_200_response"
+          description: The user was created successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+  /v1/EnrollUserIntoSession:
+    post:
+      description: This API allows developers to add a user into a session. The user
+        must have already been created with the Create User API (see above) before
+        you can add this user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v1_EnrollUserIntoSession_post_request"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_EnrollUserIntoSession_post_200_response"
+          description: The user is enrolled into the session successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+      - Session
+      - Enrollment
+  /v1/EnrollUserIntoCourse:
+    post:
+      description: "This API allows developers to add a user into a course. The user\
+        \ must have already been created with the Create User API (see above) before\
+        \ you can add this user. In general, prefer to use the EnrollUserIntoSession\
+        \ API instead of this API, because that is more specific and you can specify\
+        \ the exact session you want to enroll the user into, instead of relying on\
+        \ a policy."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v1_EnrollUserIntoCourse_post_request"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_EnrollUserIntoSession_post_200_response"
+          description: The user is enrolled into a session of the course successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+      - Course
+      - Enrollment
+  /v1/GetUserInformation/{emailAddressOrUserId}:
+    get:
+      description: This API allows developers to add a user into a session. The user
+        must have already been created with the Create User API (see above) before
+        you can add this user.
+      parameters:
+      - description: The email address or uplimit User ID of the user.
+        explode: false
+        in: path
+        name: emailAddressOrUserId
+        required: true
+        schema:
+          description: The email address or uplimit User ID of the user.
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_GetUserInformation__emailAddressOrUserId__get_200_response"
+          description: Information about the user is returned successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+  /v1/ListActiveUsers:
+    get:
+      description: This API lists all active users in your organization on the Uplimit
+        platform.
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_ListActiveUsers_get_200_response"
+          description: The list of active users is returned successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+  /v1/ListInactiveUsers:
+    get:
+      description: This API lists all inactive users in your organization on the Uplimit
+        platform.
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_ListActiveUsers_get_200_response"
+          description: The list of inactive users is returned successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+  /v1/ListCourses:
+    get:
+      description: This API allows developers to list all courses in an organization.
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_ListCourses_get_200_response"
+          description: The list of active users is returned successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Course
+  /v1/ListEnrollmentsInSession:
+    get:
+      description: This API allows developers to list all active enrollments in a
+        session.
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: uplimitSessionId
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_ListEnrollmentsInSession_get_200_response"
+          description: The list of enrollments in the session is returned successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Session
+      - User
+      - Enrollment
+  /v1/ListSessionsInCourse:
+    get:
+      description: This API allows developers to list all sessions of a course.
+      parameters:
+      - explode: true
+        in: query
+        name: skip
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: take
+        required: false
+        schema:
+          minimum: 0
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: uplimitCourseId
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_ListSessionsInCourse_get_200_response"
+          description: The list of sessions in the course is returned successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Session
+      - Course
+  /v1/ToggleUserActivation:
+    post:
+      description: This API changes whether a user is active in your organization
+        (i.e. sets their state to activated or deactivated).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v1_ToggleUserActivation_post_request"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_EnrollUserIntoSession_post_200_response"
+          description: The user activation was toggled successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+  /v1/Healthcheck:
+    get:
+      description: This API allows developers to check the health of the platform
+        and verify that the API key provided is valid.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_Healthcheck_get_200_response"
+          description: "The platform is up and running, and the API key provided is\
+            \ correct."
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_Healthcheck_get_403_response"
+          description: "The platform is up and running, but the API key provided is\
+            \ incorrect or missing."
+      security:
+      - bearerAuth: []
+      tags:
+      - Platform
+  /v1/GetLearnerActivity/start:
+    post:
+      description: "This API starts a job to export learner activity for a given sessions.\
+        \ If no sessions are provided, all sessions in the course will be exported."
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v1_GetLearnerActivity_start_post_request"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_GetLearnerActivity_start_post_200_response"
+          description: The job was started successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Export
+  /v1/GetLearnerActivity/get:
+    get:
+      description: This API gets the status of a job to export learner activity for
+        a given session.
+      parameters:
+      - description: The ID of the job to get the status of.
+        explode: true
+        in: query
+        name: jobId
+        required: true
+        schema:
+          description: The ID of the job to get the status of.
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_GetLearnerActivity_get_get_200_response"
+          description: The job status was retrieved successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - Export
+  /v1/UnenrollUserFromSession:
+    post:
+      description: This API allows developers to remove a user from a session. The
+        user must currently be enrolled in the session to be eligible for unenrollment.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v1_UnenrollUserFromSession_post_request"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_EnrollUserIntoSession_post_200_response"
+          description: The user is unenrolled from the session successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+      - Session
+      - Enrollment
+  /v1/AddUserAuthenticationMethod:
+    post:
+      description: This API creates a new user authentication method for a user within
+        your organization.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_v1_AddUserAuthenticationMethod_post_request"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_EnrollUserIntoSession_post_200_response"
+          description: The user authentication method was added successfully.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is invalid.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request is unauthorized.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: One or more of the resources required to fulfill the request
+            were not found.
+        "405":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_v1_CreateUser_post_400_response"
+          description: The request method is not allowed.
+      security:
+      - bearerAuth: []
+      tags:
+      - User
+components:
+  parameters: {}
+  schemas:
+    CreateUserSchema:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+        doNotSendWelcomeEmail:
+          description: "Whether to send the welcome email to the user. If not provided,\
+            \ the welcome email will be sent."
+          type: boolean
+      required:
+      - emailAddress
+      - firstName
+      - lastName
+    CreateUserResponseSchema:
+      properties:
+        uplimitSubscriptionEnrollmentId:
+          description: Internal ID to identify the user's membership within your organization
+            on Uplimit.
+          type: string
+        uplimitUserId:
+          description: Internal ID to identify the user across the Uplimit platform.
+          type: string
+      required:
+      - uplimitSubscriptionEnrollmentId
+      - uplimitUserId
+    EnrollUserIntoCourseSchema:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        uplimitCourseId:
+          description: Internal ID to identify the course across the Uplimit platform.
+          type: string
+        uplimitEnrollUserIntoCourseSessionSelectionPolicy:
+          description: The policy to decide which session to enroll a user into when
+            enrolling the user into a course.
+          enum:
+          - ENROLL_INTO_CLOSEST_SESSION_START_DATE_AFTER_TODAY_ENROLLABLE_SESSION_TIEBREAK_BY_SESSION_CREATION_DATE_ASCENDING
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+      required:
+      - emailAddress
+      - uplimitCourseId
+      - uplimitEnrollUserIntoCourseSessionSelectionPolicy
+    EnrollUserIntoSessionSchema:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        sessionId:
+          description: The ID of the session to enroll the user into. You must provide
+            either this or uplimitSessionId.
+          type: string
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+      required:
+      - emailAddress
+    UnenrollUserFromSessionSchema:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+      required:
+      - emailAddress
+      - uplimitSessionId
+    ToggleUserActivationSchema:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        setIsActive:
+          description: Whether to set the user as active or inactive.
+          type: boolean
+        subscriptionCommitmentId:
+          description: "(optional) The subscription commitment id to target. If not\
+            \ provided, the user will be activated on the default subscription commitment,\
+            \ or deactivated across all their subscription commitments."
+          type: string
+        doNotSendWelcomeEmail:
+          description: "(optional) Whether to send the welcome email to the user when\
+            \ reactivating them. If not provided, the welcome email will be sent.\
+            \ This option is ignored when deactivating the user."
+          type: boolean
+      required:
+      - emailAddress
+      - setIsActive
+    UplimitUserInformationSchema:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        userAccountIsActive:
+          description: Whether the user is allowed to access the Uplimit platform.
+          type: boolean
+        userHasValidSubscriptionEnrollment:
+          description: Whether the user is activated in your organization.
+          type: boolean
+        uplimitSubscriptionEnrollmentId:
+          description: Internal ID to identify the user's membership within your organization
+            on Uplimit.
+          type: string
+        uplimitSubscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+        uplimitActiveSubscriptionCommitmentIds:
+          description: All the active subscription commitment ids for this user within
+            this organization.
+          items:
+            description: Internal ID to identify the "group" the user belongs to within
+              your organization. Leaving this blank will enroll the user into the
+              default group.
+            type: string
+          type: array
+        uplimitUserId:
+          description: Internal ID to identify the user across the Uplimit platform.
+          type: string
+      required:
+      - emailAddress
+      - firstName
+      - lastName
+      - uplimitActiveSubscriptionCommitmentIds
+      - uplimitSubscriptionCommitmentId
+      - uplimitSubscriptionEnrollmentId
+      - uplimitUserId
+      - userAccountIsActive
+      - userHasValidSubscriptionEnrollment
+    UplimitUserInformationWithSessionCompletionStatusSchema:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        userAccountIsActive:
+          description: Whether the user is allowed to access the Uplimit platform.
+          type: boolean
+        userHasValidSubscriptionEnrollment:
+          description: Whether the user is activated in your organization.
+          type: boolean
+        uplimitSubscriptionEnrollmentId:
+          description: Internal ID to identify the user's membership within your organization
+            on Uplimit.
+          type: string
+        uplimitSubscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+        uplimitActiveSubscriptionCommitmentIds:
+          description: All the active subscription commitment ids for this user within
+            this organization.
+          items:
+            description: Internal ID to identify the "group" the user belongs to within
+              your organization. Leaving this blank will enroll the user into the
+              default group.
+            type: string
+          type: array
+        uplimitUserId:
+          description: Internal ID to identify the user across the Uplimit platform.
+          type: string
+        sessionCompletionStatus:
+          description: Whether the user has completed the session according to pre-defined
+            completion criteria.
+          enum:
+          - PENDING
+          - COMPLETED
+          type: string
+        uplimitSessionEnrollmentId:
+          description: The uplimit internal ID for the user enrollment in session.
+          type: string
+      required:
+      - emailAddress
+      - firstName
+      - lastName
+      - sessionCompletionStatus
+      - uplimitActiveSubscriptionCommitmentIds
+      - uplimitSessionEnrollmentId
+      - uplimitSubscriptionCommitmentId
+      - uplimitSubscriptionEnrollmentId
+      - uplimitUserId
+      - userAccountIsActive
+      - userHasValidSubscriptionEnrollment
+    UplimitSessionInformationSchema:
+      properties:
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+        name:
+          description: The name of the session.
+          type: string
+        startsAt:
+          description: The start date of the session.
+          format: date-time
+          type: string
+        endsAt:
+          description: The end date of the session.
+          format: date-time
+          type: string
+        enrollmentEnabled:
+          description: Whether the session allows enrollments
+          type: boolean
+      required:
+      - endsAt
+      - enrollmentEnabled
+      - name
+      - startsAt
+      - uplimitSessionId
+    ListActiveUsersResponseSchema:
+      properties:
+        users:
+          items:
+            $ref: "#/components/schemas/_v1_GetUserInformation__emailAddressOrUserId__get_200_response"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - totalCount
+      - users
+    UplimitCourseInformationSchema:
+      properties:
+        uplimitCourseId:
+          description: Internal ID to identify the course across the Uplimit platform.
+          type: string
+        uplimitCourseSlug:
+          description: The slug (i.e. short name) of the course across the Uplimit
+            platform.
+          type: string
+        uplimitCourseDescription:
+          description: The description of the course (may be empty).
+          type: string
+        name:
+          description: The name of the course.
+          type: string
+      required:
+      - name
+      - uplimitCourseDescription
+      - uplimitCourseId
+      - uplimitCourseSlug
+    ListCoursesResponseSchema:
+      properties:
+        courses:
+          items:
+            $ref: "#/components/schemas/_v1_ListCourses_get_200_response_courses_inner"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - courses
+      - totalCount
+    ListEnrollmentsInSessionResponseSchema:
+      properties:
+        users:
+          items:
+            $ref: "#/components/schemas/_v1_ListEnrollmentsInSession_get_200_response_users_inner"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - totalCount
+      - users
+    ListInactiveUsersResponseSchema:
+      properties:
+        users:
+          items:
+            $ref: "#/components/schemas/_v1_GetUserInformation__emailAddressOrUserId__get_200_response"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - totalCount
+      - users
+    ListSessionsInCourseResponseSchema:
+      properties:
+        sessions:
+          items:
+            $ref: "#/components/schemas/_v1_ListSessionsInCourse_get_200_response_sessions_inner"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - sessions
+      - totalCount
+    HealthcheckSuccessResponseSchema:
+      properties:
+        success:
+          type: boolean
+        uplimitOrganizationId:
+          description: The Uplimit ID of the organization.
+          type: string
+        uplimitOrganizationName:
+          description: The name of the organization as it appears in Uplimit.
+          type: string
+      required:
+      - success
+      - uplimitOrganizationId
+      - uplimitOrganizationName
+    HealthcheckIncorrectApiKeyResponseSchema:
+      properties:
+        success:
+          type: boolean
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+      - success
+    GetLearnerActivityStartResponseSchema:
+      properties:
+        jobId:
+          description: The ID of the job that was started.
+          type: string
+      required:
+      - jobId
+    GetLearnerActivityGetResponseSchema:
+      properties:
+        url:
+          description: The URL to download the exported data.
+          type: string
+      required:
+      - url
+    AddUserAuthenticationMethodSchema:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        authenticationMethod:
+          description: The authentication method to add to the user.
+          enum:
+          - SAML
+          - OAUTH2
+          type: string
+        customAuthenticationMethodProviderId:
+          description: "For SAML and OAUTH2, this is the provider ID (will be supplied\
+            \ by Uplimit to the developer)."
+          type: string
+        authenticationSecret:
+          description: "The unique identity for the authentication method. For SAML,\
+            \ this is the SAML entity ID. For OAUTH2, this is the subject identifier\
+            \ (or sub)."
+          type: string
+      required:
+      - authenticationMethod
+      - authenticationSecret
+      - customAuthenticationMethodProviderId
+      - emailAddress
+    AddUserAuthenticationMethodResponseSchema:
+      properties:
+        success:
+          type: boolean
+      required:
+      - success
+    _v1_CreateUser_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+        doNotSendWelcomeEmail:
+          description: "Whether to send the welcome email to the user. If not provided,\
+            \ the welcome email will be sent."
+          type: boolean
+      required:
+      - emailAddress
+      - firstName
+      - lastName
+    _v1_CreateUser_post_200_response:
+      example:
+        uplimitUserId: uplimitUserId
+        uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+      properties:
+        uplimitSubscriptionEnrollmentId:
+          description: Internal ID to identify the user's membership within your organization
+            on Uplimit.
+          type: string
+        uplimitUserId:
+          description: Internal ID to identify the user across the Uplimit platform.
+          type: string
+      required:
+      - uplimitSubscriptionEnrollmentId
+      - uplimitUserId
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+    _v1_EnrollUserIntoSession_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        sessionId:
+          description: The ID of the session to enroll the user into. You must provide
+            either this or uplimitSessionId.
+          type: string
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+      required:
+      - emailAddress
+    _v1_EnrollUserIntoSession_post_200_response:
+      example:
+        success: true
+      properties:
+        success:
+          type: boolean
+      required:
+      - success
+    _v1_EnrollUserIntoCourse_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        uplimitCourseId:
+          description: Internal ID to identify the course across the Uplimit platform.
+          type: string
+        uplimitEnrollUserIntoCourseSessionSelectionPolicy:
+          description: The policy to decide which session to enroll a user into when
+            enrolling the user into a course.
+          enum:
+          - ENROLL_INTO_CLOSEST_SESSION_START_DATE_AFTER_TODAY_ENROLLABLE_SESSION_TIEBREAK_BY_SESSION_CREATION_DATE_ASCENDING
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+      required:
+      - emailAddress
+      - uplimitCourseId
+      - uplimitEnrollUserIntoCourseSessionSelectionPolicy
+    _v1_GetUserInformation__emailAddressOrUserId__get_200_response:
+      example:
+        uplimitUserId: uplimitUserId
+        firstName: firstName
+        lastName: lastName
+        emailAddress: emailAddress
+        userHasValidSubscriptionEnrollment: true
+        uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+        userAccountIsActive: true
+        uplimitActiveSubscriptionCommitmentIds:
+        - uplimitActiveSubscriptionCommitmentIds
+        - uplimitActiveSubscriptionCommitmentIds
+        uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        userAccountIsActive:
+          description: Whether the user is allowed to access the Uplimit platform.
+          type: boolean
+        userHasValidSubscriptionEnrollment:
+          description: Whether the user is activated in your organization.
+          type: boolean
+        uplimitSubscriptionEnrollmentId:
+          description: Internal ID to identify the user's membership within your organization
+            on Uplimit.
+          type: string
+        uplimitSubscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+        uplimitActiveSubscriptionCommitmentIds:
+          description: All the active subscription commitment ids for this user within
+            this organization.
+          items:
+            description: Internal ID to identify the "group" the user belongs to within
+              your organization. Leaving this blank will enroll the user into the
+              default group.
+            type: string
+          type: array
+        uplimitUserId:
+          description: Internal ID to identify the user across the Uplimit platform.
+          type: string
+      required:
+      - emailAddress
+      - firstName
+      - lastName
+      - uplimitActiveSubscriptionCommitmentIds
+      - uplimitSubscriptionCommitmentId
+      - uplimitSubscriptionEnrollmentId
+      - uplimitUserId
+      - userAccountIsActive
+      - userHasValidSubscriptionEnrollment
+    _v1_ListActiveUsers_get_200_response:
+      example:
+        totalCount: 0.8008281904610115
+        users:
+        - uplimitUserId: uplimitUserId
+          firstName: firstName
+          lastName: lastName
+          emailAddress: emailAddress
+          userHasValidSubscriptionEnrollment: true
+          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+          userAccountIsActive: true
+          uplimitActiveSubscriptionCommitmentIds:
+          - uplimitActiveSubscriptionCommitmentIds
+          - uplimitActiveSubscriptionCommitmentIds
+          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+        - uplimitUserId: uplimitUserId
+          firstName: firstName
+          lastName: lastName
+          emailAddress: emailAddress
+          userHasValidSubscriptionEnrollment: true
+          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+          userAccountIsActive: true
+          uplimitActiveSubscriptionCommitmentIds:
+          - uplimitActiveSubscriptionCommitmentIds
+          - uplimitActiveSubscriptionCommitmentIds
+          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+      properties:
+        users:
+          items:
+            $ref: "#/components/schemas/_v1_GetUserInformation__emailAddressOrUserId__get_200_response"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - totalCount
+      - users
+    _v1_ListCourses_get_200_response_courses_inner:
+      example:
+        uplimitCourseDescription: uplimitCourseDescription
+        name: name
+        uplimitCourseSlug: uplimitCourseSlug
+        uplimitCourseId: uplimitCourseId
+      properties:
+        uplimitCourseId:
+          description: Internal ID to identify the course across the Uplimit platform.
+          type: string
+        uplimitCourseSlug:
+          description: The slug (i.e. short name) of the course across the Uplimit
+            platform.
+          type: string
+        uplimitCourseDescription:
+          description: The description of the course (may be empty).
+          type: string
+        name:
+          description: The name of the course.
+          type: string
+      required:
+      - name
+      - uplimitCourseDescription
+      - uplimitCourseId
+      - uplimitCourseSlug
+    _v1_ListCourses_get_200_response:
+      example:
+        courses:
+        - uplimitCourseDescription: uplimitCourseDescription
+          name: name
+          uplimitCourseSlug: uplimitCourseSlug
+          uplimitCourseId: uplimitCourseId
+        - uplimitCourseDescription: uplimitCourseDescription
+          name: name
+          uplimitCourseSlug: uplimitCourseSlug
+          uplimitCourseId: uplimitCourseId
+        totalCount: 0.8008281904610115
+      properties:
+        courses:
+          items:
+            $ref: "#/components/schemas/_v1_ListCourses_get_200_response_courses_inner"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - courses
+      - totalCount
+    _v1_ListEnrollmentsInSession_get_200_response_users_inner:
+      example:
+        uplimitUserId: uplimitUserId
+        firstName: firstName
+        lastName: lastName
+        emailAddress: emailAddress
+        userHasValidSubscriptionEnrollment: true
+        uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+        userAccountIsActive: true
+        uplimitActiveSubscriptionCommitmentIds:
+        - uplimitActiveSubscriptionCommitmentIds
+        - uplimitActiveSubscriptionCommitmentIds
+        sessionCompletionStatus: PENDING
+        uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+        uplimitSessionEnrollmentId: uplimitSessionEnrollmentId
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        userAccountIsActive:
+          description: Whether the user is allowed to access the Uplimit platform.
+          type: boolean
+        userHasValidSubscriptionEnrollment:
+          description: Whether the user is activated in your organization.
+          type: boolean
+        uplimitSubscriptionEnrollmentId:
+          description: Internal ID to identify the user's membership within your organization
+            on Uplimit.
+          type: string
+        uplimitSubscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within
+            your organization. Leaving this blank will enroll the user into the default
+            group.
+          type: string
+        uplimitActiveSubscriptionCommitmentIds:
+          description: All the active subscription commitment ids for this user within
+            this organization.
+          items:
+            description: Internal ID to identify the "group" the user belongs to within
+              your organization. Leaving this blank will enroll the user into the
+              default group.
+            type: string
+          type: array
+        uplimitUserId:
+          description: Internal ID to identify the user across the Uplimit platform.
+          type: string
+        sessionCompletionStatus:
+          description: Whether the user has completed the session according to pre-defined
+            completion criteria.
+          enum:
+          - PENDING
+          - COMPLETED
+          type: string
+        uplimitSessionEnrollmentId:
+          description: The uplimit internal ID for the user enrollment in session.
+          type: string
+      required:
+      - emailAddress
+      - firstName
+      - lastName
+      - sessionCompletionStatus
+      - uplimitActiveSubscriptionCommitmentIds
+      - uplimitSessionEnrollmentId
+      - uplimitSubscriptionCommitmentId
+      - uplimitSubscriptionEnrollmentId
+      - uplimitUserId
+      - userAccountIsActive
+      - userHasValidSubscriptionEnrollment
+    _v1_ListEnrollmentsInSession_get_200_response:
+      example:
+        totalCount: 0.8008281904610115
+        users:
+        - uplimitUserId: uplimitUserId
+          firstName: firstName
+          lastName: lastName
+          emailAddress: emailAddress
+          userHasValidSubscriptionEnrollment: true
+          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+          userAccountIsActive: true
+          uplimitActiveSubscriptionCommitmentIds:
+          - uplimitActiveSubscriptionCommitmentIds
+          - uplimitActiveSubscriptionCommitmentIds
+          sessionCompletionStatus: PENDING
+          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+          uplimitSessionEnrollmentId: uplimitSessionEnrollmentId
+        - uplimitUserId: uplimitUserId
+          firstName: firstName
+          lastName: lastName
+          emailAddress: emailAddress
+          userHasValidSubscriptionEnrollment: true
+          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+          userAccountIsActive: true
+          uplimitActiveSubscriptionCommitmentIds:
+          - uplimitActiveSubscriptionCommitmentIds
+          - uplimitActiveSubscriptionCommitmentIds
+          sessionCompletionStatus: PENDING
+          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+          uplimitSessionEnrollmentId: uplimitSessionEnrollmentId
+      properties:
+        users:
+          items:
+            $ref: "#/components/schemas/_v1_ListEnrollmentsInSession_get_200_response_users_inner"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - totalCount
+      - users
+    _v1_ListSessionsInCourse_get_200_response_sessions_inner:
+      example:
+        enrollmentEnabled: true
+        name: name
+        startsAt: 2000-01-23T04:56:07.000+00:00
+        uplimitSessionId: uplimitSessionId
+        endsAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+        name:
+          description: The name of the session.
+          type: string
+        startsAt:
+          description: The start date of the session.
+          format: date-time
+          type: string
+        endsAt:
+          description: The end date of the session.
+          format: date-time
+          type: string
+        enrollmentEnabled:
+          description: Whether the session allows enrollments
+          type: boolean
+      required:
+      - endsAt
+      - enrollmentEnabled
+      - name
+      - startsAt
+      - uplimitSessionId
+    _v1_ListSessionsInCourse_get_200_response:
+      example:
+        sessions:
+        - enrollmentEnabled: true
+          name: name
+          startsAt: 2000-01-23T04:56:07.000+00:00
+          uplimitSessionId: uplimitSessionId
+          endsAt: 2000-01-23T04:56:07.000+00:00
+        - enrollmentEnabled: true
+          name: name
+          startsAt: 2000-01-23T04:56:07.000+00:00
+          uplimitSessionId: uplimitSessionId
+          endsAt: 2000-01-23T04:56:07.000+00:00
+        totalCount: 0.8008281904610115
+      properties:
+        sessions:
+          items:
+            $ref: "#/components/schemas/_v1_ListSessionsInCourse_get_200_response_sessions_inner"
+          type: array
+        totalCount:
+          type: number
+      required:
+      - sessions
+      - totalCount
+    _v1_ToggleUserActivation_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        setIsActive:
+          description: Whether to set the user as active or inactive.
+          type: boolean
+        subscriptionCommitmentId:
+          description: "(optional) The subscription commitment id to target. If not\
+            \ provided, the user will be activated on the default subscription commitment,\
+            \ or deactivated across all their subscription commitments."
+          type: string
+        doNotSendWelcomeEmail:
+          description: "(optional) Whether to send the welcome email to the user when\
+            \ reactivating them. If not provided, the welcome email will be sent.\
+            \ This option is ignored when deactivating the user."
+          type: boolean
+      required:
+      - emailAddress
+      - setIsActive
+    _v1_Healthcheck_get_200_response:
+      example:
+        uplimitOrganizationName: uplimitOrganizationName
+        success: true
+        uplimitOrganizationId: uplimitOrganizationId
+      properties:
+        success:
+          type: boolean
+        uplimitOrganizationId:
+          description: The Uplimit ID of the organization.
+          type: string
+        uplimitOrganizationName:
+          description: The name of the organization as it appears in Uplimit.
+          type: string
+      required:
+      - success
+      - uplimitOrganizationId
+      - uplimitOrganizationName
+    _v1_Healthcheck_get_403_response:
+      example:
+        success: true
+        error: error
+      properties:
+        success:
+          type: boolean
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+      - success
+    _v1_GetLearnerActivity_start_post_request:
+      properties:
+        sessionIds:
+          description: "The IDs of the sessions to export activity for. If not provided,\
+            \ all sessions will be exported."
+          items:
+            type: string
+          type: array
+    _v1_GetLearnerActivity_start_post_200_response:
+      example:
+        jobId: jobId
+      properties:
+        jobId:
+          description: The ID of the job that was started.
+          type: string
+      required:
+      - jobId
+    _v1_GetLearnerActivity_get_get_200_response:
+      example:
+        url: url
+      properties:
+        url:
+          description: The URL to download the exported data.
+          type: string
+      required:
+      - url
+    _v1_UnenrollUserFromSession_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+      required:
+      - emailAddress
+      - uplimitSessionId
+    _v1_AddUserAuthenticationMethod_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        authenticationMethod:
+          description: The authentication method to add to the user.
+          enum:
+          - SAML
+          - OAUTH2
+          type: string
+        customAuthenticationMethodProviderId:
+          description: "For SAML and OAUTH2, this is the provider ID (will be supplied\
+            \ by Uplimit to the developer)."
+          type: string
+        authenticationSecret:
+          description: "The unique identity for the authentication method. For SAML,\
+            \ this is the SAML entity ID. For OAUTH2, this is the subject identifier\
+            \ (or sub)."
+          type: string
+      required:
+      - authenticationMethod
+      - authenticationSecret
+      - customAuthenticationMethodProviderId
+      - emailAddress
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http

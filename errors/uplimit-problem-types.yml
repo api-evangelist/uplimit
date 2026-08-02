@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/uplimit-organization-openapi-original.yml
+format: json-error-envelope
+envelope:
+  description: All error responses return a JSON object with a single `error` string
+    field (schema _v1_CreateUser_post_400_response / HealthcheckIncorrectApiKeyResponseSchema).
+    The API does not use RFC 9457 application/problem+json.
+  content_type: application/json
+  fields:
+    - name: error
+      type: string
+      description: The error message.
+problems:
+  - status: 400
+    title: The request is invalid
+    description: Returned by every operation when the request body or parameters are invalid.
+    schema: _v1_CreateUser_post_400_response
+  - status: 401
+    title: The request is unauthorized
+    description: Returned by every operation (except Healthcheck) when the bearer token
+      is missing or invalid.
+    schema: _v1_CreateUser_post_400_response
+  - status: 403
+    title: Incorrect or missing API key
+    description: 'Returned by GET /v1/Healthcheck when the platform is up but the API
+      key provided is incorrect or missing. Response also carries success=false.'
+    schema: _v1_Healthcheck_get_403_response
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/Healthcheck
+  - status: 404
+    title: Resource not found
+    description: Returned when one or more of the resources required to fulfill the
+      request (user, course, session, enrollment) were not found.
+    schema: _v1_CreateUser_post_400_response
+  - status: 405
+    title: Method not allowed
+    description: Returned when the request method is not allowed on the endpoint.
+    schema: _v1_CreateUser_post_400_response

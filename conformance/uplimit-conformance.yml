@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/uplimit-organization-openapi-original.yml
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: The API itself uses static HTTP bearer tokens (securitySchemes
+      bearerAuth type http/bearer), not OAuth 2.0 flows. OAUTH2 appears only as a
+      learner SSO identity type in POST /v1/AddUserAuthenticationMethod.
+  - id: oidc
+    conforms: false
+    evidence: No openIdConnect security scheme; /.well-known/openid-configuration
+      on uplimit.com returned 404 (probed 2026-07-21).
+  - id: saml-sso
+    conforms: true
+    evidence: POST /v1/AddUserAuthenticationMethod binds SAML entity IDs (and
+      OAuth2 subject identifiers) to users for enterprise SSO, with provider IDs
+      supplied by Uplimit.
+  - id: scim
+    conforms: false
+    evidence: User provisioning uses a proprietary RPC surface (CreateUser,
+      ToggleUserActivation), not SCIM 2.0 /Users /Groups paths.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are a plain application/json '{error}' envelope, not
+      application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: Offset pagination via skip/take query params with totalCount in
+      list responses (5 list operations).
+  - id: idempotency
+    conforms: false
+    evidence: No Idempotency-Key header or replay-safety contract in the spec.
+  - id: json-api
+    conforms: false
+    evidence: Plain JSON request/response bodies; no JSON:API media type.
+  - id: openapi-3.1
+    conforms: true
+    evidence: Published spec (go-client/api/openapi.yaml in
+      github.com/uplimit/api-clients) is OpenAPI 3.1.0.

@@ -1,0 +1,82 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/uplimit-organization-openapi-original.yml
+entities:
+  - name: Organization
+    id_field: uplimitOrganizationId
+    description: The enterprise customer account; identified by the bearer token
+      (returned by GET /v1/Healthcheck with uplimitOrganizationName).
+  - name: User
+    id_field: uplimitUserId
+    description: A learner account on the Uplimit platform; addressable by email
+      address or uplimitUserId. Carries userAccountIsActive and
+      userHasValidSubscriptionEnrollment flags.
+  - name: SubscriptionEnrollment
+    id_field: uplimitSubscriptionEnrollmentId
+    description: A user's membership within an organization on Uplimit.
+  - name: SubscriptionCommitment
+    id_field: uplimitSubscriptionCommitmentId
+    description: The "group" a user belongs to within an organization; users may
+      hold multiple active commitments (uplimitActiveSubscriptionCommitmentIds).
+  - name: Course
+    id_field: uplimitCourseId
+    description: A course in the organization catalog, with uplimitCourseSlug,
+      name, and description.
+  - name: Session
+    id_field: uplimitSessionId
+    description: A scheduled run of a course, with startsAt/endsAt and
+      enrollmentEnabled.
+  - name: SessionEnrollment
+    id_field: uplimitSessionEnrollmentId
+    description: A user's enrollment in a specific session, with
+      sessionCompletionStatus (PENDING | COMPLETED).
+  - name: AuthenticationMethod
+    description: An SSO identity binding (SAML entity ID or OAUTH2 subject) added
+      to a user via POST /v1/AddUserAuthenticationMethod, scoped to a
+      customAuthenticationMethodProviderId supplied by Uplimit.
+  - name: ExportJob
+    id_field: jobId
+    description: An asynchronous learner-activity export; started with POST
+      /v1/GetLearnerActivity/start and polled at GET /v1/GetLearnerActivity/get
+      until a download url is returned.
+relationships:
+  - from: Organization
+    to: User
+    kind: has_many
+    via: uplimitSubscriptionEnrollmentId
+  - from: User
+    to: SubscriptionEnrollment
+    kind: has_one
+    via: uplimitSubscriptionEnrollmentId
+  - from: User
+    to: SubscriptionCommitment
+    kind: has_many
+    via: uplimitActiveSubscriptionCommitmentIds
+  - from: SubscriptionCommitment
+    to: Organization
+    kind: belongs_to
+    via: uplimitSubscriptionCommitmentId
+  - from: Course
+    to: Session
+    kind: has_many
+    via: uplimitCourseId (GET /v1/ListSessionsInCourse)
+  - from: Session
+    to: SessionEnrollment
+    kind: has_many
+    via: uplimitSessionId (GET /v1/ListEnrollmentsInSession)
+  - from: SessionEnrollment
+    to: User
+    kind: belongs_to
+    via: uplimitUserId
+  - from: User
+    to: AuthenticationMethod
+    kind: has_many
+    via: emailAddress (POST /v1/AddUserAuthenticationMethod)
+  - from: Organization
+    to: ExportJob
+    kind: has_many
+    via: jobId
+  - from: Organization
+    to: Course
+    kind: has_many
+    via: uplimitCourseId (GET /v1/ListCourses)

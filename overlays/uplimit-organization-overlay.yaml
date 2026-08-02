@@ -1,0 +1,74 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Uplimit Organization API
+  version: 1.0.0
+extends: openapi/uplimit-organization-openapi-original.yml
+x-generated: '2026-07-21'
+x-method: generated
+actions:
+  - target: $.info
+    description: Tag the spec with API Evangelist catalog metadata.
+    update:
+      x-apievangelist-provider: uplimit
+      x-apievangelist-repo: https://github.com/api-evangelist/uplimit
+  - target: $.paths['/v1/CreateUser'].post
+    description: Add a stable operationId (the published spec declares none).
+    update:
+      operationId: createUser
+      summary: Create a user and enroll them into your organization
+  - target: $.paths['/v1/EnrollUserIntoSession'].post
+    update:
+      operationId: enrollUserIntoSession
+      summary: Enroll a user into a session
+  - target: $.paths['/v1/EnrollUserIntoCourse'].post
+    update:
+      operationId: enrollUserIntoCourse
+      summary: Enroll a user into a course by policy
+  - target: $.paths['/v1/GetUserInformation/{emailAddressOrUserId}'].get
+    update:
+      operationId: getUserInformation
+      summary: Get user information by email or user ID
+  - target: $.paths['/v1/ListActiveUsers'].get
+    update:
+      operationId: listActiveUsers
+      summary: List active users
+  - target: $.paths['/v1/ListInactiveUsers'].get
+    update:
+      operationId: listInactiveUsers
+      summary: List inactive users
+  - target: $.paths['/v1/ListCourses'].get
+    update:
+      operationId: listCourses
+      summary: List courses
+  - target: $.paths['/v1/ListEnrollmentsInSession'].get
+    update:
+      operationId: listEnrollmentsInSession
+      summary: List enrollments in a session
+  - target: $.paths['/v1/ListSessionsInCourse'].get
+    update:
+      operationId: listSessionsInCourse
+      summary: List sessions in a course
+  - target: $.paths['/v1/ToggleUserActivation'].post
+    update:
+      operationId: toggleUserActivation
+      summary: Activate or deactivate a user
+  - target: $.paths['/v1/Healthcheck'].get
+    update:
+      operationId: healthcheck
+      summary: Check platform health and API key validity
+  - target: $.paths['/v1/GetLearnerActivity/start'].post
+    update:
+      operationId: startLearnerActivityExport
+      summary: Start a learner-activity export job
+  - target: $.paths['/v1/GetLearnerActivity/get'].get
+    update:
+      operationId: getLearnerActivityExport
+      summary: Get a learner-activity export job result
+  - target: $.paths['/v1/UnenrollUserFromSession'].post
+    update:
+      operationId: unenrollUserFromSession
+      summary: Unenroll a user from a session
+  - target: $.paths['/v1/AddUserAuthenticationMethod'].post
+    update:
+      operationId: addUserAuthenticationMethod
+      summary: Add an SSO authentication method to a user

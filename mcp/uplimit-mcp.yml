@@ -1,0 +1,61 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/uplimit-organization-openapi-original.yml
+notes: No official hosted MCP server was found for Uplimit (no mention in docs,
+  GitHub org, npm, or MCP registries as of 2026-07-21). This is a candidate tool
+  list derived from the Uplimit Organization API OpenAPI. The spec declares no
+  operationIds, so source_operation references use METHOD path form.
+server:
+  name: uplimit-organization
+  transport: http
+tools:
+  - name: create_user
+    description: Create a new user account on Uplimit and enroll them into your
+      organization (enrolls the existing user if the email already exists).
+    source_operation: openapi/uplimit-organization-openapi-original.yml#POST /v1/CreateUser
+  - name: enroll_user_into_session
+    description: Enroll an existing user into a specific session.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#POST /v1/EnrollUserIntoSession
+  - name: enroll_user_into_course
+    description: Enroll an existing user into a course using a session-selection policy.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#POST /v1/EnrollUserIntoCourse
+  - name: get_user_information
+    description: Get information about a user by email address or Uplimit user ID.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/GetUserInformation/{emailAddressOrUserId}
+  - name: list_active_users
+    description: List all active users in the organization (skip/take pagination).
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/ListActiveUsers
+  - name: list_inactive_users
+    description: List all inactive users in the organization (skip/take pagination).
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/ListInactiveUsers
+  - name: list_courses
+    description: List all courses in the organization.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/ListCourses
+  - name: list_enrollments_in_session
+    description: List all active enrollments in a session, with completion status.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/ListEnrollmentsInSession
+  - name: list_sessions_in_course
+    description: List all sessions of a course.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/ListSessionsInCourse
+  - name: toggle_user_activation
+    description: Activate or deactivate a user in the organization.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#POST /v1/ToggleUserActivation
+  - name: healthcheck
+    description: Check platform health and validate the API key; returns the
+      organization id and name.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/Healthcheck
+  - name: start_learner_activity_export
+    description: Start an asynchronous job to export learner activity for given
+      sessions (all sessions if none provided).
+    source_operation: openapi/uplimit-organization-openapi-original.yml#POST /v1/GetLearnerActivity/start
+  - name: get_learner_activity_export
+    description: Get the status of a learner-activity export job; returns a
+      download URL when complete.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#GET /v1/GetLearnerActivity/get
+  - name: unenroll_user_from_session
+    description: Remove a user from a session they are enrolled in.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#POST /v1/UnenrollUserFromSession
+  - name: add_user_authentication_method
+    description: Add an SSO authentication method (SAML or OAUTH2) to a user.
+    source_operation: openapi/uplimit-organization-openapi-original.yml#POST /v1/AddUserAuthenticationMethod

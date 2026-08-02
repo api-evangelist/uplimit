@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+host: https://uplimit.com
+notes: All standard /.well-known/ discovery documents were probed on 2026-07-21;
+  none are published. The API base (https://uplimit.com/api/organization/)
+  shares the same host. Statuses recorded honestly - absence is valid data.
+documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 404

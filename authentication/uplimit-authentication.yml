@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/uplimit-organization-openapi-original.yml
+docs: https://github.com/uplimit/api-clients/blob/main/go-client/README.md
+summary:
+  types: [http-bearer]
+  notes: Every operation on the Uplimit Organization API requires an
+    organization API token sent as an HTTP Bearer token. The go-client README
+    documents HTTP Bearer token authentication; GET /v1/Healthcheck validates
+    the key and returns the organization id/name (403 on a bad key). Tokens are
+    issued by Uplimit to Enterprise customers (no self-serve key portal was
+    found). Learner-facing SSO (SAML / OAuth2 identity binding) is managed via
+    POST /v1/AddUserAuthenticationMethod and is separate from API auth.
+schemes:
+  - name: bearerAuth
+    type: http
+    scheme: bearer
+    applied: all operations (per-operation security)
+    sources: [openapi/uplimit-organization-openapi-original.yml]

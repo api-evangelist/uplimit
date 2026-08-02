@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://status.uplimit.com (live probe 2026-07-21) + openapi/uplimit-organization-openapi-original.yml
+versioning:
+  scheme: uri-path + date-based spec version
+  current_path_version: v1
+  spec_version: '2025-08-18'
+  notes: Paths carry a /v1/ prefix while info.version is a date (2025-08-18),
+    suggesting date-stamped spec revisions over a stable v1 path.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No deprecation policy or Sunset/Deprecation header support is
+    published; no operations are marked deprecated in the spec.
+sla: null
+status_page: https://status.uplimit.com
+status_page_notes: UptimeRobot-powered public status page with 24h/7d/30d/90d
+  uptime metrics and status updates.
+deprecated_operations: []

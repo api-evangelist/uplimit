@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/uplimit/api-clients
+notes: Uplimit publishes first-party generated API clients (OpenAPI Generator
+  7.14.0) in its GitHub org, but has not published them to public package
+  registries as of 2026-07-21 (npm registry.npmjs.org/uplimit 404, PyPI
+  pypi.org/pypi/uplimit 404; the api-clients repo has no releases).
+packages:
+  - language: go
+    registry: github
+    name: uplimit/api-clients (go-client)
+    url: https://github.com/uplimit/api-clients/tree/main/go-client
+    install: go get github.com/uplimit/api-clients/go-client
+    official: true
+  - language: python
+    registry: github
+    name: uplimit/api-clients (python-pydantic-v1-client)
+    url: https://github.com/uplimit/api-clients/tree/main/python-pydantic-v1-client
+    install: pip install git+https://github.com/uplimit/api-clients.git#subdirectory=python-pydantic-v1-client
+    official: true
+  - language: typescript
+    registry: github
+    name: uplimit/api-clients (typescript-node-client)
+    url: https://github.com/uplimit/api-clients/tree/main/typescript-node-client
+    install: clone https://github.com/uplimit/api-clients (typescript-node-client/)
+    official: true
