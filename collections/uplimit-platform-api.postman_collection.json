@@ -1,0 +1,164 @@
+{
+  "item": [
+    {
+      "id": "549bd041-29ff-4202-bf7b-40856c89e482",
+      "name": "Platform",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1fc7af35-8823-43dc-9d38-4ae149662d32",
+          "name": "This API allows developers to check the health of the platform and verify that the API key provided is valid.",
+          "request": {
+            "name": "This API allows developers to check the health of the platform and verify that the API key provided is valid.",
+            "description": {
+              "content": "This API allows developers to check the health of the platform and verify that the API key provided is valid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "Healthcheck"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b071c588-4a03-4b20-9ef9-f00b41e840d5",
+              "name": "The platform is up and running, and the API key provided is correct.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Healthcheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uplimitOrganizationName\": \"uplimitOrganizationName\",\n  \"success\": true,\n  \"uplimitOrganizationId\": \"uplimitOrganizationId\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b683dceb-9262-48ab-b302-e5e477d403ca",
+              "name": "The platform is up and running, but the API key provided is incorrect or missing.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "Healthcheck"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uplimit.com/api/organization/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "00485111-efd4-4d66-96c9-8d797e6d4901",
+    "name": "Uplimit Organization Course Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API is used to manage organizations within the Uplimit platform. For more information, please reach out to your Uplimit Enterprise contact.\n\nContact Support:\n Name: Uplimit\n Email: hello@uplimit.com",
+      "type": "text/plain"
+    }
+  }
+}

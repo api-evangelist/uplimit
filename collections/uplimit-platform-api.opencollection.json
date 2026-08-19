@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uplimit Organization Course Platform API",
+    "version": "2025-08-18"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Platform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /v1/Healthcheck",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uplimit.com/api/organization/v1/Healthcheck",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to check the health of the platform and verify that the API key provided is valid."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

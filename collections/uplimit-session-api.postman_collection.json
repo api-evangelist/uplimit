@@ -1,0 +1,1358 @@
+{
+  "item": [
+    {
+      "id": "a1a22e3f-c49a-486c-a182-4add28fdcffb",
+      "name": "Session",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f66dee2d-547a-4265-a8d4-87c5827f70bc",
+          "name": "This API allows developers to add a user into a session. The user must have already been created with the Create User API (see above) before you can add this user.",
+          "request": {
+            "name": "This API allows developers to add a user into a session. The user must have already been created with the Create User API (see above) before you can add this user.",
+            "description": {
+              "content": "This API allows developers to add a user into a session. The user must have already been created with the Create User API (see above) before you can add this user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "EnrollUserIntoSession"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\",\n  \"subscriptionCommitmentId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c575e5f-da4b-4543-bca2-8a83a5016250",
+              "name": "The user is enrolled into the session successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "EnrollUserIntoSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\",\n  \"subscriptionCommitmentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5200df7c-310b-4b39-a347-9583289599e0",
+              "name": "The request is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "EnrollUserIntoSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\",\n  \"subscriptionCommitmentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a1c5c41-9ac1-47e0-af9d-5e68e14a7dc7",
+              "name": "The request is unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "EnrollUserIntoSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\",\n  \"subscriptionCommitmentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2bcd77a7-5da8-443f-a054-d693c594013e",
+              "name": "One or more of the resources required to fulfill the request were not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "EnrollUserIntoSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\",\n  \"subscriptionCommitmentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bad66bb-fbd3-4469-8f75-1d052487b6a9",
+              "name": "The request method is not allowed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "EnrollUserIntoSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"sessionId\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\",\n  \"subscriptionCommitmentId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ba81e56-224e-4e85-ae0c-9823720589f2",
+          "name": "This API allows developers to list all active enrollments in a session.",
+          "request": {
+            "name": "This API allows developers to list all active enrollments in a session.",
+            "description": {
+              "content": "This API allows developers to list all active enrollments in a session.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "ListEnrollmentsInSession"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "take",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "uplimitSessionId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd2d21d9-d660-402a-b2f0-829726f5092c",
+              "name": "The list of enrollments in the session is returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListEnrollmentsInSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitSessionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"totalCount\": 0.8008281904610115,\n  \"users\": [\n    {\n      \"uplimitUserId\": \"uplimitUserId\",\n      \"firstName\": \"firstName\",\n      \"lastName\": \"lastName\",\n      \"emailAddress\": \"emailAddress\",\n      \"userHasValidSubscriptionEnrollment\": true,\n      \"uplimitSubscriptionCommitmentId\": \"uplimitSubscriptionCommitmentId\",\n      \"userAccountIsActive\": true,\n      \"uplimitActiveSubscriptionCommitmentIds\": [\n        \"uplimitActiveSubscriptionCommitmentIds\",\n        \"uplimitActiveSubscriptionCommitmentIds\"\n      ],\n      \"sessionCompletionStatus\": \"PENDING\",\n      \"uplimitSubscriptionEnrollmentId\": \"uplimitSubscriptionEnrollmentId\",\n      \"uplimitSessionEnrollmentId\": \"uplimitSessionEnrollmentId\"\n    },\n    {\n      \"uplimitUserId\": \"uplimitUserId\",\n      \"firstName\": \"firstName\",\n      \"lastName\": \"lastName\",\n      \"emailAddress\": \"emailAddress\",\n      \"userHasValidSubscriptionEnrollment\": true,\n      \"uplimitSubscriptionCommitmentId\": \"uplimitSubscriptionCommitmentId\",\n      \"userAccountIsActive\": true,\n      \"uplimitActiveSubscriptionCommitmentIds\": [\n        \"uplimitActiveSubscriptionCommitmentIds\",\n        \"uplimitActiveSubscriptionCommitmentIds\"\n      ],\n      \"sessionCompletionStatus\": \"PENDING\",\n      \"uplimitSubscriptionEnrollmentId\": \"uplimitSubscriptionEnrollmentId\",\n      \"uplimitSessionEnrollmentId\": \"uplimitSessionEnrollmentId\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7974296-7503-48ff-9854-bf35575e0bc1",
+              "name": "The request is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListEnrollmentsInSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitSessionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3f32636-2b02-4d7f-bf65-c11177555f5f",
+              "name": "The request is unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListEnrollmentsInSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitSessionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16c0e667-6958-471c-b9ab-962318b1d3a2",
+              "name": "One or more of the resources required to fulfill the request were not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListEnrollmentsInSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitSessionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c234fcaa-3338-4501-9918-b86eb00ea625",
+              "name": "The request method is not allowed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListEnrollmentsInSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitSessionId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93a787a8-285c-4256-8949-f5d3c008c238",
+          "name": "This API allows developers to list all sessions of a course.",
+          "request": {
+            "name": "This API allows developers to list all sessions of a course.",
+            "description": {
+              "content": "This API allows developers to list all sessions of a course.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "ListSessionsInCourse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "take",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "uplimitCourseId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "47d5a17f-25fc-4395-91f0-a99135796d59",
+              "name": "The list of sessions in the course is returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListSessionsInCourse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitCourseId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessions\": [\n    {\n      \"enrollmentEnabled\": true,\n      \"name\": \"name\",\n      \"startsAt\": \"2000-01-23 04:56:07+00:00\",\n      \"uplimitSessionId\": \"uplimitSessionId\",\n      \"endsAt\": \"2000-01-23 04:56:07+00:00\"\n    },\n    {\n      \"enrollmentEnabled\": true,\n      \"name\": \"name\",\n      \"startsAt\": \"2000-01-23 04:56:07+00:00\",\n      \"uplimitSessionId\": \"uplimitSessionId\",\n      \"endsAt\": \"2000-01-23 04:56:07+00:00\"\n    }\n  ],\n  \"totalCount\": 0.8008281904610115\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "976be0b6-fb4a-476d-b9d7-d28601f2f7ff",
+              "name": "The request is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListSessionsInCourse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitCourseId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aedc1d8b-f1ac-49a6-9778-6c85aae47c1a",
+              "name": "The request is unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListSessionsInCourse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitCourseId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "977275b9-cb20-4f41-8079-8109676a1581",
+              "name": "One or more of the resources required to fulfill the request were not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListSessionsInCourse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitCourseId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6f58f4d-747a-4271-8ae1-5303aeb4f48b",
+              "name": "The request method is not allowed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "ListSessionsInCourse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "take",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "uplimitCourseId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afa36483-efbb-43f4-a800-382222f027da",
+          "name": "This API allows developers to remove a user from a session. The user must currently be enrolled in the session to be eligible for unenrollment.",
+          "request": {
+            "name": "This API allows developers to remove a user from a session. The user must currently be enrolled in the session to be eligible for unenrollment.",
+            "description": {
+              "content": "This API allows developers to remove a user from a session. The user must currently be enrolled in the session to be eligible for unenrollment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "UnenrollUserFromSession"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "72c8ff60-2624-4722-8884-c804743e4931",
+              "name": "The user is unenrolled from the session successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "UnenrollUserFromSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eeeca2a0-d182-4630-b51f-d9e17d8baad7",
+              "name": "The request is invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "UnenrollUserFromSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ffe6c0a-7f3f-48ee-9142-081a52c378b3",
+              "name": "The request is unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "UnenrollUserFromSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4a6ed5e-8869-4754-af66-41fc89b1ccec",
+              "name": "One or more of the resources required to fulfill the request were not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "UnenrollUserFromSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b6928bb-5a31-45eb-91bc-50ef30a6561d",
+              "name": "The request method is not allowed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "UnenrollUserFromSession"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"emailAddress\": \"<string>\",\n  \"uplimitSessionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"error\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uplimit.com/api/organization/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6446d6b7-b381-40ac-a0d2-256ec9d1eac2",
+    "name": "Uplimit Organization Course Session API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This API is used to manage organizations within the Uplimit platform. For more information, please reach out to your Uplimit Enterprise contact.\n\nContact Support:\n Name: Uplimit\n Email: hello@uplimit.com",
+      "type": "text/plain"
+    }
+  }
+}

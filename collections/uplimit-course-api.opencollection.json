@@ -1,0 +1,96 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uplimit Organization Course API",
+    "version": "2025-08-18"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Course",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /v1/EnrollUserIntoCourse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uplimit.com/api/organization/v1/EnrollUserIntoCourse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to add a user into a course. The user must have already been created with the Create User API (see above) before you can add this user. In general, prefer to use the EnrollUserIntoSession API instead of this API, because that is more specific and you can specify the exact session you want to enroll the user into, instead of relying on a policy."
+        },
+        {
+          "info": {
+            "name": "GET /v1/ListCourses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uplimit.com/api/organization/v1/ListCourses",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to list all courses in an organization."
+        },
+        {
+          "info": {
+            "name": "GET /v1/ListSessionsInCourse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uplimit.com/api/organization/v1/ListSessionsInCourse",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "uplimitCourseId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to list all sessions of a course."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

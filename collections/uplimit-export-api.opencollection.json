@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uplimit Organization Course Export API",
+    "version": "2025-08-18"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Export",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /v1/GetLearnerActivity/start",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uplimit.com/api/organization/v1/GetLearnerActivity/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API starts a job to export learner activity for a given sessions. If no sessions are provided, all sessions in the course will be exported."
+        },
+        {
+          "info": {
+            "name": "GET /v1/GetLearnerActivity/get",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uplimit.com/api/organization/v1/GetLearnerActivity/get",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the job to get the status of."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API gets the status of a job to export learner activity for a given session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

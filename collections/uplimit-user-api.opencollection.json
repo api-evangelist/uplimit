@@ -1,0 +1,241 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Uplimit Organization Course User API",
+    "version": "2025-08-18"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /v1/CreateUser",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uplimit.com/api/organization/v1/CreateUser",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API creates a new user account on Uplimit and enrolls the user into your organization. If a user account with the same email already exists, we will just enroll that existing user into your organization. "
+        },
+        {
+          "info": {
+            "name": "POST /v1/EnrollUserIntoSession",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uplimit.com/api/organization/v1/EnrollUserIntoSession",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to add a user into a session. The user must have already been created with the Create User API (see above) before you can add this user."
+        },
+        {
+          "info": {
+            "name": "POST /v1/EnrollUserIntoCourse",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uplimit.com/api/organization/v1/EnrollUserIntoCourse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to add a user into a course. The user must have already been created with the Create User API (see above) before you can add this user. In general, prefer to use the EnrollUserIntoSession API instead of this API, because that is more specific and you can specify the exact session you want to enroll the user into, instead of relying on a policy."
+        },
+        {
+          "info": {
+            "name": "GET /v1/GetUserInformation/{emailAddressOrUserId}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uplimit.com/api/organization/v1/GetUserInformation/:emailAddressOrUserId",
+            "params": [
+              {
+                "name": "emailAddressOrUserId",
+                "value": "",
+                "type": "path",
+                "description": "The email address or uplimit User ID of the user."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to add a user into a session. The user must have already been created with the Create User API (see above) before you can add this user."
+        },
+        {
+          "info": {
+            "name": "GET /v1/ListActiveUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uplimit.com/api/organization/v1/ListActiveUsers",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API lists all active users in your organization on the Uplimit platform."
+        },
+        {
+          "info": {
+            "name": "GET /v1/ListInactiveUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uplimit.com/api/organization/v1/ListInactiveUsers",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API lists all inactive users in your organization on the Uplimit platform."
+        },
+        {
+          "info": {
+            "name": "GET /v1/ListEnrollmentsInSession",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uplimit.com/api/organization/v1/ListEnrollmentsInSession",
+            "params": [
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "uplimitSessionId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to list all active enrollments in a session."
+        },
+        {
+          "info": {
+            "name": "POST /v1/ToggleUserActivation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uplimit.com/api/organization/v1/ToggleUserActivation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API changes whether a user is active in your organization (i.e. sets their state to activated or deactivated)."
+        },
+        {
+          "info": {
+            "name": "POST /v1/UnenrollUserFromSession",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uplimit.com/api/organization/v1/UnenrollUserFromSession",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API allows developers to remove a user from a session. The user must currently be enrolled in the session to be eligible for unenrollment."
+        },
+        {
+          "info": {
+            "name": "POST /v1/AddUserAuthenticationMethod",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://uplimit.com/api/organization/v1/AddUserAuthenticationMethod",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This API creates a new user authentication method for a user within your organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
