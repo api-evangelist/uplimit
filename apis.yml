@@ -52,6 +52,8 @@ apis:
   humanURL: https://github.com/uplimit/api-clients
   baseURL: https://uplimit.com/api/organization
   tags:
+  - course
+  tags_raw:
   - Course
   properties:
   - type: OpenAPI
