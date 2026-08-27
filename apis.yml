@@ -60,18 +60,6 @@ apis:
     url: openapi/uplimit-course-api-openapi.yml
   - type: APIReference
     url: https://github.com/uplimit/api-clients/tree/main/go-client/docs
-- aid: uplimit:uplimit-enrollment-api
-  name: Uplimit Enrollment API
-  description: The Enrollment API from Uplimit — 4 operation(s) for enrollment.
-  humanURL: https://github.com/uplimit/api-clients
-  baseURL: https://uplimit.com/api/organization
-  tags:
-  - Enrollment
-  properties:
-  - type: OpenAPI
-    url: openapi/uplimit-enrollment-api-openapi.yml
-  - type: APIReference
-    url: https://github.com/uplimit/api-clients/tree/main/go-client/docs
 - aid: uplimit:uplimit-export-api
   name: Uplimit Export API
   description: The Export API from Uplimit — 2 operation(s) for export.
