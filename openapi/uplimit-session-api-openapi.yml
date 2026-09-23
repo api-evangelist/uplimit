@@ -1,11 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: hello@uplimit.com
     name: Uplimit
     url: https://uplimit.com
   description: This API is used to manage organizations within the Uplimit platform. For more information, please reach out to your Uplimit Enterprise contact.
-  title: Uplimit Organization Course Session API
+  title: Uplimit Organization Session API
   version: 2025-08-18
 servers:
 - description: Uplimit
@@ -13,49 +13,6 @@ servers:
 tags:
 - name: Session
 paths:
-  /v1/EnrollUserIntoSession:
-    post:
-      description: This API allows developers to add a user into a session. The user must have already been created with the Create User API (see above) before you can add this user.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/_v1_EnrollUserIntoSession_post_request'
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_EnrollUserIntoSession_post_200_response'
-          description: The user is enrolled into the session successfully.
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
-          description: The request is invalid.
-        '401':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
-          description: The request is unauthorized.
-        '404':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
-          description: One or more of the resources required to fulfill the request were not found.
-        '405':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
-          description: The request method is not allowed.
-      security:
-      - bearerAuth: []
-      tags:
-      - Session
   /v1/ListEnrollmentsInSession:
     get:
       description: This API allows developers to list all active enrollments in a session.
@@ -118,6 +75,10 @@ paths:
       - bearerAuth: []
       tags:
       - Session
+      summary: Get list enrollments in session
+      x-summary-source: derived
+      operationId: getV1ListEnrollmentsInSession
+      x-operation-id-source: derived
   /v1/ListSessionsInCourse:
     get:
       description: This API allows developers to list all sessions of a course.
@@ -180,49 +141,10 @@ paths:
       - bearerAuth: []
       tags:
       - Session
-  /v1/UnenrollUserFromSession:
-    post:
-      description: This API allows developers to remove a user from a session. The user must currently be enrolled in the session to be eligible for unenrollment.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/_v1_UnenrollUserFromSession_post_request'
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_EnrollUserIntoSession_post_200_response'
-          description: The user is unenrolled from the session successfully.
-        '400':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
-          description: The request is invalid.
-        '401':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
-          description: The request is unauthorized.
-        '404':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
-          description: One or more of the resources required to fulfill the request were not found.
-        '405':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/_v1_CreateUser_post_400_response'
-          description: The request method is not allowed.
-      security:
-      - bearerAuth: []
-      tags:
-      - Session
+      summary: Get list sessions in course
+      x-summary-source: derived
+      operationId: getV1ListSessionsInCourse
+      x-operation-id-source: derived
 components:
   schemas:
     _v1_ListEnrollmentsInSession_get_200_response:
@@ -265,41 +187,37 @@ components:
       required:
       - totalCount
       - users
-    _v1_UnenrollUserFromSession_post_request:
-      properties:
-        emailAddress:
-          description: The email address of the user.
-          type: string
-        uplimitSessionId:
-          description: Internal ID to identify the session across the Uplimit platform.
-          type: string
-      required:
-      - emailAddress
-      - uplimitSessionId
-    _v1_EnrollUserIntoSession_post_request:
-      properties:
-        emailAddress:
-          description: The email address of the user.
-          type: string
-        sessionId:
-          description: The ID of the session to enroll the user into. You must provide either this or uplimitSessionId.
-          type: string
-        uplimitSessionId:
-          description: Internal ID to identify the session across the Uplimit platform.
-          type: string
-        subscriptionCommitmentId:
-          description: Internal ID to identify the "group" the user belongs to within your organization. Leaving this blank will enroll the user into the default group.
-          type: string
-      required:
-      - emailAddress
-    _v1_EnrollUserIntoSession_post_200_response:
+    _v1_ListSessionsInCourse_get_200_response_sessions_inner:
       example:
-        success: true
+        enrollmentEnabled: true
+        name: name
+        startsAt: 2000-01-23 04:56:07+00:00
+        uplimitSessionId: uplimitSessionId
+        endsAt: 2000-01-23 04:56:07+00:00
       properties:
-        success:
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+        name:
+          description: The name of the session.
+          type: string
+        startsAt:
+          description: The start date of the session.
+          format: date-time
+          type: string
+        endsAt:
+          description: The end date of the session.
+          format: date-time
+          type: string
+        enrollmentEnabled:
+          description: Whether the session allows enrollments
           type: boolean
       required:
-      - success
+      - endsAt
+      - enrollmentEnabled
+      - name
+      - startsAt
+      - uplimitSessionId
     _v1_ListEnrollmentsInSession_get_200_response_users_inner:
       example:
         uplimitUserId: uplimitUserId
@@ -367,6 +285,15 @@ components:
       - uplimitUserId
       - userAccountIsActive
       - userHasValidSubscriptionEnrollment
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
     _v1_ListSessionsInCourse_get_200_response:
       example:
         sessions:
@@ -391,46 +318,6 @@ components:
       required:
       - sessions
       - totalCount
-    _v1_ListSessionsInCourse_get_200_response_sessions_inner:
-      example:
-        enrollmentEnabled: true
-        name: name
-        startsAt: 2000-01-23 04:56:07+00:00
-        uplimitSessionId: uplimitSessionId
-        endsAt: 2000-01-23 04:56:07+00:00
-      properties:
-        uplimitSessionId:
-          description: Internal ID to identify the session across the Uplimit platform.
-          type: string
-        name:
-          description: The name of the session.
-          type: string
-        startsAt:
-          description: The start date of the session.
-          format: date-time
-          type: string
-        endsAt:
-          description: The end date of the session.
-          format: date-time
-          type: string
-        enrollmentEnabled:
-          description: Whether the session allows enrollments
-          type: boolean
-      required:
-      - endsAt
-      - enrollmentEnabled
-      - name
-      - startsAt
-      - uplimitSessionId
-    _v1_CreateUser_post_400_response:
-      example:
-        error: error
-      properties:
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
   securitySchemes:
     bearerAuth:
       scheme: bearer

@@ -1,11 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: hello@uplimit.com
     name: Uplimit
     url: https://uplimit.com
   description: This API is used to manage organizations within the Uplimit platform. For more information, please reach out to your Uplimit Enterprise contact.
-  title: Uplimit Organization Course Export API
+  title: Uplimit Organization Export API
   version: 2025-08-18
 servers:
 - description: Uplimit
@@ -56,6 +56,10 @@ paths:
       - bearerAuth: []
       tags:
       - Export
+      summary: Create get learner activity start
+      x-summary-source: derived
+      operationId: postV1GetLearnerActivityStart
+      x-operation-id-source: derived
   /v1/GetLearnerActivity/get:
     get:
       description: This API gets the status of a job to export learner activity for a given session.
@@ -104,6 +108,10 @@ paths:
       - bearerAuth: []
       tags:
       - Export
+      summary: Get get learner activity get
+      x-summary-source: derived
+      operationId: getV1GetLearnerActivityGet
+      x-operation-id-source: derived
 components:
   schemas:
     _v1_GetLearnerActivity_start_post_request:
@@ -113,24 +121,6 @@ components:
           items:
             type: string
           type: array
-    _v1_CreateUser_post_400_response:
-      example:
-        error: error
-      properties:
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
-    _v1_GetLearnerActivity_get_get_200_response:
-      example:
-        url: url
-      properties:
-        url:
-          description: The URL to download the exported data.
-          type: string
-      required:
-      - url
     _v1_GetLearnerActivity_start_post_200_response:
       example:
         jobId: jobId
@@ -140,6 +130,24 @@ components:
           type: string
       required:
       - jobId
+    _v1_GetLearnerActivity_get_get_200_response:
+      example:
+        url: url
+      properties:
+        url:
+          description: The URL to download the exported data.
+          type: string
+      required:
+      - url
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
   securitySchemes:
     bearerAuth:
       scheme: bearer

@@ -1,16 +1,10 @@
 {
   "provider": "uplimit",
   "sources": [
-    "uplimit-course-api-openapi.yml",
-    "uplimit-enrollment-api-openapi.yml",
-    "uplimit-export-api-openapi.yml",
-    "uplimit-platform-api-openapi.yml",
-    "uplimit-session-api-openapi.yml",
-    "uplimit-user-api-openapi.yml"
+    "_original/uplimit-organization-openapi-original.yml"
   ],
   "outputs": [
     "uplimit-course-api-openapi.yml",
-    "uplimit-enrollment-api-openapi.yml",
     "uplimit-export-api-openapi.yml",
     "uplimit-platform-api-openapi.yml",
     "uplimit-session-api-openapi.yml",
@@ -19,6 +13,23 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "uplimit-organization-openapi-original.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "uplimit-organization-openapi-original.yml: declared missing tag: Course",
+    "uplimit-organization-openapi-original.yml: declared missing tag: Enrollment",
+    "uplimit-organization-openapi-original.yml: declared missing tag: Export",
+    "uplimit-organization-openapi-original.yml: declared missing tag: Platform",
+    "uplimit-organization-openapi-original.yml: declared missing tag: Session",
+    "uplimit-organization-openapi-original.yml: declared missing tag: User",
+    "uplimit-organization-openapi-original.yml: multi-axis tagging (6 tags, 5 first tags, 1.60x duplication over 15 operations) \u2014 split on first tag, 5 operations narrowed",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "uplimit-course-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "uplimit-export-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "uplimit-platform-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "uplimit-session-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "uplimit-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

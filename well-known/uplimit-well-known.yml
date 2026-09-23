@@ -1,10 +1,12 @@
 generated: '2026-07-21'
 method: searched
 host: https://uplimit.com
-notes: All standard /.well-known/ discovery documents were probed on 2026-07-21;
-  none are published. The API base (https://uplimit.com/api/organization/)
-  shares the same host. Statuses recorded honestly - absence is valid data.
-documents:
+notes: All standard /.well-known/ discovery documents were probed on 2026-07-21; none are published. The
+  API base (https://uplimit.com/api/organization/) shares the same host. Statuses recorded honestly -
+  absence is valid data.
+hosts:
+- host: https://uplimit.com
+  documents:
   - path: /.well-known/security.txt
     status: 404
   - path: /.well-known/openid-configuration
@@ -15,5 +17,8 @@ documents:
     status: 404
   - path: /.well-known/ai-plugin.json
     status: 404
-  - path: /llms.txt
-    status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
