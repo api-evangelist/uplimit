@@ -467,77 +467,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    _v1_UnenrollUserFromSession_post_request:
-      properties:
-        emailAddress:
-          description: The email address of the user.
-          type: string
-        uplimitSessionId:
-          description: Internal ID to identify the session across the Uplimit platform.
-          type: string
-      required:
-      - emailAddress
-      - uplimitSessionId
-    _v1_EnrollUserIntoSession_post_200_response:
-      example:
-        success: true
-      properties:
-        success:
-          type: boolean
-      required:
-      - success
-    _v1_EnrollUserIntoSession_post_request:
-      properties:
-        emailAddress:
-          description: The email address of the user.
-          type: string
-        sessionId:
-          description: The ID of the session to enroll the user into. You must provide either this or uplimitSessionId.
-          type: string
-        uplimitSessionId:
-          description: Internal ID to identify the session across the Uplimit platform.
-          type: string
-        subscriptionCommitmentId:
-          description: Internal ID to identify the "group" the user belongs to within your organization. Leaving this blank will enroll the user into the default group.
-          type: string
-      required:
-      - emailAddress
-    _v1_ListActiveUsers_get_200_response:
-      example:
-        totalCount: 0.8008281904610115
-        users:
-        - uplimitUserId: uplimitUserId
-          firstName: firstName
-          lastName: lastName
-          emailAddress: emailAddress
-          userHasValidSubscriptionEnrollment: true
-          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
-          userAccountIsActive: true
-          uplimitActiveSubscriptionCommitmentIds:
-          - uplimitActiveSubscriptionCommitmentIds
-          - uplimitActiveSubscriptionCommitmentIds
-          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
-        - uplimitUserId: uplimitUserId
-          firstName: firstName
-          lastName: lastName
-          emailAddress: emailAddress
-          userHasValidSubscriptionEnrollment: true
-          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
-          userAccountIsActive: true
-          uplimitActiveSubscriptionCommitmentIds:
-          - uplimitActiveSubscriptionCommitmentIds
-          - uplimitActiveSubscriptionCommitmentIds
-          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
-      properties:
-        users:
-          items:
-            $ref: '#/components/schemas/_v1_GetUserInformation__emailAddressOrUserId__get_200_response'
-          type: array
-        totalCount:
-          type: number
-      required:
-      - totalCount
-      - users
     _v1_AddUserAuthenticationMethod_post_request:
       properties:
         emailAddress:
@@ -560,6 +489,48 @@ components:
       - authenticationSecret
       - customAuthenticationMethodProviderId
       - emailAddress
+    _v1_CreateUser_post_200_response:
+      example:
+        uplimitUserId: uplimitUserId
+        uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+      properties:
+        uplimitSubscriptionEnrollmentId:
+          description: Internal ID to identify the user's membership within your organization on Uplimit.
+          type: string
+        uplimitUserId:
+          description: Internal ID to identify the user across the Uplimit platform.
+          type: string
+      required:
+      - uplimitSubscriptionEnrollmentId
+      - uplimitUserId
+    _v1_ToggleUserActivation_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        setIsActive:
+          description: Whether to set the user as active or inactive.
+          type: boolean
+        subscriptionCommitmentId:
+          description: (optional) The subscription commitment id to target. If not provided, the user will be activated on the default subscription commitment, or deactivated across all their subscription commitments.
+          type: string
+        doNotSendWelcomeEmail:
+          description: (optional) Whether to send the welcome email to the user when reactivating them. If not provided, the welcome email will be sent. This option is ignored when deactivating the user.
+          type: boolean
+      required:
+      - emailAddress
+      - setIsActive
+    _v1_UnenrollUserFromSession_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+      required:
+      - emailAddress
+      - uplimitSessionId
     _v1_GetUserInformation__emailAddressOrUserId__get_200_response:
       example:
         uplimitUserId: uplimitUserId
@@ -614,6 +585,42 @@ components:
       - uplimitUserId
       - userAccountIsActive
       - userHasValidSubscriptionEnrollment
+    _v1_ListActiveUsers_get_200_response:
+      example:
+        totalCount: 0.8008281904610115
+        users:
+        - uplimitUserId: uplimitUserId
+          firstName: firstName
+          lastName: lastName
+          emailAddress: emailAddress
+          userHasValidSubscriptionEnrollment: true
+          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+          userAccountIsActive: true
+          uplimitActiveSubscriptionCommitmentIds:
+          - uplimitActiveSubscriptionCommitmentIds
+          - uplimitActiveSubscriptionCommitmentIds
+          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+        - uplimitUserId: uplimitUserId
+          firstName: firstName
+          lastName: lastName
+          emailAddress: emailAddress
+          userHasValidSubscriptionEnrollment: true
+          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+          userAccountIsActive: true
+          uplimitActiveSubscriptionCommitmentIds:
+          - uplimitActiveSubscriptionCommitmentIds
+          - uplimitActiveSubscriptionCommitmentIds
+          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/_v1_GetUserInformation__emailAddressOrUserId__get_200_response'
+          type: array
+        totalCount:
+          type: number
+      required:
+      - totalCount
+      - users
     _v1_CreateUser_post_request:
       properties:
         emailAddress:
@@ -635,46 +642,6 @@ components:
       - emailAddress
       - firstName
       - lastName
-    _v1_CreateUser_post_400_response:
-      example:
-        error: error
-      properties:
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
-    _v1_ToggleUserActivation_post_request:
-      properties:
-        emailAddress:
-          description: The email address of the user.
-          type: string
-        setIsActive:
-          description: Whether to set the user as active or inactive.
-          type: boolean
-        subscriptionCommitmentId:
-          description: (optional) The subscription commitment id to target. If not provided, the user will be activated on the default subscription commitment, or deactivated across all their subscription commitments.
-          type: string
-        doNotSendWelcomeEmail:
-          description: (optional) Whether to send the welcome email to the user when reactivating them. If not provided, the welcome email will be sent. This option is ignored when deactivating the user.
-          type: boolean
-      required:
-      - emailAddress
-      - setIsActive
-    _v1_CreateUser_post_200_response:
-      example:
-        uplimitUserId: uplimitUserId
-        uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
-      properties:
-        uplimitSubscriptionEnrollmentId:
-          description: Internal ID to identify the user's membership within your organization on Uplimit.
-          type: string
-        uplimitUserId:
-          description: Internal ID to identify the user across the Uplimit platform.
-          type: string
-      required:
-      - uplimitSubscriptionEnrollmentId
-      - uplimitUserId
     _v1_EnrollUserIntoCourse_post_request:
       properties:
         emailAddress:
@@ -695,6 +662,39 @@ components:
       - emailAddress
       - uplimitCourseId
       - uplimitEnrollUserIntoCourseSessionSelectionPolicy
+    _v1_EnrollUserIntoSession_post_200_response:
+      example:
+        success: true
+      properties:
+        success:
+          type: boolean
+      required:
+      - success
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+    _v1_EnrollUserIntoSession_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        sessionId:
+          description: The ID of the session to enroll the user into. You must provide either this or uplimitSessionId.
+          type: string
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within your organization. Leaving this blank will enroll the user into the default group.
+          type: string
+      required:
+      - emailAddress
   securitySchemes:
     bearerAuth:
       scheme: bearer

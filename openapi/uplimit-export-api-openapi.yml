@@ -114,6 +114,24 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+    _v1_GetLearnerActivity_get_get_200_response:
+      example:
+        url: url
+      properties:
+        url:
+          description: The URL to download the exported data.
+          type: string
+      required:
+      - url
     _v1_GetLearnerActivity_start_post_request:
       properties:
         sessionIds:
@@ -130,24 +148,6 @@ components:
           type: string
       required:
       - jobId
-    _v1_GetLearnerActivity_get_get_200_response:
-      example:
-        url: url
-      properties:
-        url:
-          description: The URL to download the exported data.
-          type: string
-      required:
-      - url
-    _v1_CreateUser_post_400_response:
-      example:
-        error: error
-      properties:
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
   securitySchemes:
     bearerAuth:
       scheme: bearer
