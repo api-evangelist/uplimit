@@ -39,6 +39,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    _v1_Healthcheck_get_403_response:
+      example:
+        success: true
+        error: error
+      properties:
+        success:
+          type: boolean
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
+      - success
     _v1_Healthcheck_get_200_response:
       example:
         uplimitOrganizationName: uplimitOrganizationName
@@ -57,19 +70,6 @@ components:
       - success
       - uplimitOrganizationId
       - uplimitOrganizationName
-    _v1_Healthcheck_get_403_response:
-      example:
-        success: true
-        error: error
-      properties:
-        success:
-          type: boolean
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
-      - success
   securitySchemes:
     bearerAuth:
       scheme: bearer

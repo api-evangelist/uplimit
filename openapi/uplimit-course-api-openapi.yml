@@ -74,15 +74,28 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    _v1_CreateUser_post_400_response:
+    _v1_ListCourses_get_200_response:
       example:
-        error: error
+        courses:
+        - uplimitCourseDescription: uplimitCourseDescription
+          name: name
+          uplimitCourseSlug: uplimitCourseSlug
+          uplimitCourseId: uplimitCourseId
+        - uplimitCourseDescription: uplimitCourseDescription
+          name: name
+          uplimitCourseSlug: uplimitCourseSlug
+          uplimitCourseId: uplimitCourseId
+        totalCount: 0.8008281904610115
       properties:
-        error:
-          description: The error message.
-          type: string
+        courses:
+          items:
+            $ref: '#/components/schemas/_v1_ListCourses_get_200_response_courses_inner'
+          type: array
+        totalCount:
+          type: number
       required:
-      - error
+      - courses
+      - totalCount
     _v1_ListCourses_get_200_response_courses_inner:
       example:
         uplimitCourseDescription: uplimitCourseDescription
@@ -107,28 +120,15 @@ components:
       - uplimitCourseDescription
       - uplimitCourseId
       - uplimitCourseSlug
-    _v1_ListCourses_get_200_response:
+    _v1_CreateUser_post_400_response:
       example:
-        courses:
-        - uplimitCourseDescription: uplimitCourseDescription
-          name: name
-          uplimitCourseSlug: uplimitCourseSlug
-          uplimitCourseId: uplimitCourseId
-        - uplimitCourseDescription: uplimitCourseDescription
-          name: name
-          uplimitCourseSlug: uplimitCourseSlug
-          uplimitCourseId: uplimitCourseId
-        totalCount: 0.8008281904610115
+        error: error
       properties:
-        courses:
-          items:
-            $ref: '#/components/schemas/_v1_ListCourses_get_200_response_courses_inner'
-          type: array
-        totalCount:
-          type: number
+        error:
+          description: The error message.
+          type: string
       required:
-      - courses
-      - totalCount
+      - error
   securitySchemes:
     bearerAuth:
       scheme: bearer

@@ -147,46 +147,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    _v1_ListEnrollmentsInSession_get_200_response:
-      example:
-        totalCount: 0.8008281904610115
-        users:
-        - uplimitUserId: uplimitUserId
-          firstName: firstName
-          lastName: lastName
-          emailAddress: emailAddress
-          userHasValidSubscriptionEnrollment: true
-          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
-          userAccountIsActive: true
-          uplimitActiveSubscriptionCommitmentIds:
-          - uplimitActiveSubscriptionCommitmentIds
-          - uplimitActiveSubscriptionCommitmentIds
-          sessionCompletionStatus: PENDING
-          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
-          uplimitSessionEnrollmentId: uplimitSessionEnrollmentId
-        - uplimitUserId: uplimitUserId
-          firstName: firstName
-          lastName: lastName
-          emailAddress: emailAddress
-          userHasValidSubscriptionEnrollment: true
-          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
-          userAccountIsActive: true
-          uplimitActiveSubscriptionCommitmentIds:
-          - uplimitActiveSubscriptionCommitmentIds
-          - uplimitActiveSubscriptionCommitmentIds
-          sessionCompletionStatus: PENDING
-          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
-          uplimitSessionEnrollmentId: uplimitSessionEnrollmentId
-      properties:
-        users:
-          items:
-            $ref: '#/components/schemas/_v1_ListEnrollmentsInSession_get_200_response_users_inner'
-          type: array
-        totalCount:
-          type: number
-      required:
-      - totalCount
-      - users
     _v1_ListEnrollmentsInSession_get_200_response_users_inner:
       example:
         uplimitUserId: uplimitUserId
@@ -254,6 +214,15 @@ components:
       - uplimitUserId
       - userAccountIsActive
       - userHasValidSubscriptionEnrollment
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
     _v1_ListSessionsInCourse_get_200_response_sessions_inner:
       example:
         enrollmentEnabled: true
@@ -285,15 +254,6 @@ components:
       - name
       - startsAt
       - uplimitSessionId
-    _v1_CreateUser_post_400_response:
-      example:
-        error: error
-      properties:
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
     _v1_ListSessionsInCourse_get_200_response:
       example:
         sessions:
@@ -318,6 +278,46 @@ components:
       required:
       - sessions
       - totalCount
+    _v1_ListEnrollmentsInSession_get_200_response:
+      example:
+        totalCount: 0.8008281904610115
+        users:
+        - uplimitUserId: uplimitUserId
+          firstName: firstName
+          lastName: lastName
+          emailAddress: emailAddress
+          userHasValidSubscriptionEnrollment: true
+          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+          userAccountIsActive: true
+          uplimitActiveSubscriptionCommitmentIds:
+          - uplimitActiveSubscriptionCommitmentIds
+          - uplimitActiveSubscriptionCommitmentIds
+          sessionCompletionStatus: PENDING
+          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+          uplimitSessionEnrollmentId: uplimitSessionEnrollmentId
+        - uplimitUserId: uplimitUserId
+          firstName: firstName
+          lastName: lastName
+          emailAddress: emailAddress
+          userHasValidSubscriptionEnrollment: true
+          uplimitSubscriptionCommitmentId: uplimitSubscriptionCommitmentId
+          userAccountIsActive: true
+          uplimitActiveSubscriptionCommitmentIds:
+          - uplimitActiveSubscriptionCommitmentIds
+          - uplimitActiveSubscriptionCommitmentIds
+          sessionCompletionStatus: PENDING
+          uplimitSubscriptionEnrollmentId: uplimitSubscriptionEnrollmentId
+          uplimitSessionEnrollmentId: uplimitSessionEnrollmentId
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/_v1_ListEnrollmentsInSession_get_200_response_users_inner'
+          type: array
+        totalCount:
+          type: number
+      required:
+      - totalCount
+      - users
   securitySchemes:
     bearerAuth:
       scheme: bearer
