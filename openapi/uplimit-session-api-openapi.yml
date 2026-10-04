@@ -147,6 +147,30 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    _v1_ListSessionsInCourse_get_200_response:
+      example:
+        sessions:
+        - enrollmentEnabled: true
+          name: name
+          startsAt: 2000-01-23 04:56:07+00:00
+          uplimitSessionId: uplimitSessionId
+          endsAt: 2000-01-23 04:56:07+00:00
+        - enrollmentEnabled: true
+          name: name
+          startsAt: 2000-01-23 04:56:07+00:00
+          uplimitSessionId: uplimitSessionId
+          endsAt: 2000-01-23 04:56:07+00:00
+        totalCount: 0.8008281904610115
+      properties:
+        sessions:
+          items:
+            $ref: '#/components/schemas/_v1_ListSessionsInCourse_get_200_response_sessions_inner'
+          type: array
+        totalCount:
+          type: number
+      required:
+      - sessions
+      - totalCount
     _v1_ListEnrollmentsInSession_get_200_response_users_inner:
       example:
         uplimitUserId: uplimitUserId
@@ -214,70 +238,6 @@ components:
       - uplimitUserId
       - userAccountIsActive
       - userHasValidSubscriptionEnrollment
-    _v1_CreateUser_post_400_response:
-      example:
-        error: error
-      properties:
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
-    _v1_ListSessionsInCourse_get_200_response_sessions_inner:
-      example:
-        enrollmentEnabled: true
-        name: name
-        startsAt: 2000-01-23 04:56:07+00:00
-        uplimitSessionId: uplimitSessionId
-        endsAt: 2000-01-23 04:56:07+00:00
-      properties:
-        uplimitSessionId:
-          description: Internal ID to identify the session across the Uplimit platform.
-          type: string
-        name:
-          description: The name of the session.
-          type: string
-        startsAt:
-          description: The start date of the session.
-          format: date-time
-          type: string
-        endsAt:
-          description: The end date of the session.
-          format: date-time
-          type: string
-        enrollmentEnabled:
-          description: Whether the session allows enrollments
-          type: boolean
-      required:
-      - endsAt
-      - enrollmentEnabled
-      - name
-      - startsAt
-      - uplimitSessionId
-    _v1_ListSessionsInCourse_get_200_response:
-      example:
-        sessions:
-        - enrollmentEnabled: true
-          name: name
-          startsAt: 2000-01-23 04:56:07+00:00
-          uplimitSessionId: uplimitSessionId
-          endsAt: 2000-01-23 04:56:07+00:00
-        - enrollmentEnabled: true
-          name: name
-          startsAt: 2000-01-23 04:56:07+00:00
-          uplimitSessionId: uplimitSessionId
-          endsAt: 2000-01-23 04:56:07+00:00
-        totalCount: 0.8008281904610115
-      properties:
-        sessions:
-          items:
-            $ref: '#/components/schemas/_v1_ListSessionsInCourse_get_200_response_sessions_inner'
-          type: array
-        totalCount:
-          type: number
-      required:
-      - sessions
-      - totalCount
     _v1_ListEnrollmentsInSession_get_200_response:
       example:
         totalCount: 0.8008281904610115
@@ -318,6 +278,46 @@ components:
       required:
       - totalCount
       - users
+    _v1_ListSessionsInCourse_get_200_response_sessions_inner:
+      example:
+        enrollmentEnabled: true
+        name: name
+        startsAt: 2000-01-23 04:56:07+00:00
+        uplimitSessionId: uplimitSessionId
+        endsAt: 2000-01-23 04:56:07+00:00
+      properties:
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
+        name:
+          description: The name of the session.
+          type: string
+        startsAt:
+          description: The start date of the session.
+          format: date-time
+          type: string
+        endsAt:
+          description: The end date of the session.
+          format: date-time
+          type: string
+        enrollmentEnabled:
+          description: Whether the session allows enrollments
+          type: boolean
+      required:
+      - endsAt
+      - enrollmentEnabled
+      - name
+      - startsAt
+      - uplimitSessionId
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
   securitySchemes:
     bearerAuth:
       scheme: bearer

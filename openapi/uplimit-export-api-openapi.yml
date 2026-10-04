@@ -114,13 +114,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    _v1_GetLearnerActivity_start_post_request:
+    _v1_GetLearnerActivity_start_post_200_response:
+      example:
+        jobId: jobId
       properties:
-        sessionIds:
-          description: The IDs of the sessions to export activity for. If not provided, all sessions will be exported.
-          items:
-            type: string
-          type: array
+        jobId:
+          description: The ID of the job that was started.
+          type: string
+      required:
+      - jobId
     _v1_CreateUser_post_400_response:
       example:
         error: error
@@ -139,15 +141,13 @@ components:
           type: string
       required:
       - url
-    _v1_GetLearnerActivity_start_post_200_response:
-      example:
-        jobId: jobId
+    _v1_GetLearnerActivity_start_post_request:
       properties:
-        jobId:
-          description: The ID of the job that was started.
-          type: string
-      required:
-      - jobId
+        sessionIds:
+          description: The IDs of the sessions to export activity for. If not provided, all sessions will be exported.
+          items:
+            type: string
+          type: array
   securitySchemes:
     bearerAuth:
       scheme: bearer
