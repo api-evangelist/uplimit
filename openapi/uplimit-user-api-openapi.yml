@@ -467,26 +467,14 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    _v1_EnrollUserIntoCourse_post_request:
+    _v1_EnrollUserIntoSession_post_200_response:
+      example:
+        success: true
       properties:
-        emailAddress:
-          description: The email address of the user.
-          type: string
-        uplimitCourseId:
-          description: Internal ID to identify the course across the Uplimit platform.
-          type: string
-        uplimitEnrollUserIntoCourseSessionSelectionPolicy:
-          description: The policy to decide which session to enroll a user into when enrolling the user into a course.
-          enum:
-          - ENROLL_INTO_CLOSEST_SESSION_START_DATE_AFTER_TODAY_ENROLLABLE_SESSION_TIEBREAK_BY_SESSION_CREATION_DATE_ASCENDING
-          type: string
-        subscriptionCommitmentId:
-          description: Internal ID to identify the "group" the user belongs to within your organization. Leaving this blank will enroll the user into the default group.
-          type: string
+        success:
+          type: boolean
       required:
-      - emailAddress
-      - uplimitCourseId
-      - uplimitEnrollUserIntoCourseSessionSelectionPolicy
+      - success
     _v1_AddUserAuthenticationMethod_post_request:
       properties:
         emailAddress:
@@ -509,6 +497,26 @@ components:
       - authenticationSecret
       - customAuthenticationMethodProviderId
       - emailAddress
+    _v1_EnrollUserIntoCourse_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        uplimitCourseId:
+          description: Internal ID to identify the course across the Uplimit platform.
+          type: string
+        uplimitEnrollUserIntoCourseSessionSelectionPolicy:
+          description: The policy to decide which session to enroll a user into when enrolling the user into a course.
+          enum:
+          - ENROLL_INTO_CLOSEST_SESSION_START_DATE_AFTER_TODAY_ENROLLABLE_SESSION_TIEBREAK_BY_SESSION_CREATION_DATE_ASCENDING
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within your organization. Leaving this blank will enroll the user into the default group.
+          type: string
+      required:
+      - emailAddress
+      - uplimitCourseId
+      - uplimitEnrollUserIntoCourseSessionSelectionPolicy
     _v1_EnrollUserIntoSession_post_request:
       properties:
         emailAddress:
@@ -525,14 +533,17 @@ components:
           type: string
       required:
       - emailAddress
-    _v1_EnrollUserIntoSession_post_200_response:
-      example:
-        success: true
+    _v1_UnenrollUserFromSession_post_request:
       properties:
-        success:
-          type: boolean
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        uplimitSessionId:
+          description: Internal ID to identify the session across the Uplimit platform.
+          type: string
       required:
-      - success
+      - emailAddress
+      - uplimitSessionId
     _v1_GetUserInformation__emailAddressOrUserId__get_200_response:
       example:
         uplimitUserId: uplimitUserId
@@ -604,17 +615,6 @@ components:
       required:
       - emailAddress
       - setIsActive
-    _v1_UnenrollUserFromSession_post_request:
-      properties:
-        emailAddress:
-          description: The email address of the user.
-          type: string
-        uplimitSessionId:
-          description: Internal ID to identify the session across the Uplimit platform.
-          type: string
-      required:
-      - emailAddress
-      - uplimitSessionId
     _v1_CreateUser_post_200_response:
       example:
         uplimitUserId: uplimitUserId
@@ -629,6 +629,36 @@ components:
       required:
       - uplimitSubscriptionEnrollmentId
       - uplimitUserId
+    _v1_CreateUser_post_request:
+      properties:
+        emailAddress:
+          description: The email address of the user.
+          type: string
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        subscriptionCommitmentId:
+          description: Internal ID to identify the "group" the user belongs to within your organization. Leaving this blank will enroll the user into the default group.
+          type: string
+        doNotSendWelcomeEmail:
+          description: Whether to send the welcome email to the user. If not provided, the welcome email will be sent.
+          type: boolean
+      required:
+      - emailAddress
+      - firstName
+      - lastName
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
     _v1_ListActiveUsers_get_200_response:
       example:
         totalCount: 0.8008281904610115
@@ -665,36 +695,6 @@ components:
       required:
       - totalCount
       - users
-    _v1_CreateUser_post_400_response:
-      example:
-        error: error
-      properties:
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
-    _v1_CreateUser_post_request:
-      properties:
-        emailAddress:
-          description: The email address of the user.
-          type: string
-        firstName:
-          description: The first name of the user.
-          type: string
-        lastName:
-          description: The last name of the user.
-          type: string
-        subscriptionCommitmentId:
-          description: Internal ID to identify the "group" the user belongs to within your organization. Leaving this blank will enroll the user into the default group.
-          type: string
-        doNotSendWelcomeEmail:
-          description: Whether to send the welcome email to the user. If not provided, the welcome email will be sent.
-          type: boolean
-      required:
-      - emailAddress
-      - firstName
-      - lastName
   securitySchemes:
     bearerAuth:
       scheme: bearer

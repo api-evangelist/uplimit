@@ -74,15 +74,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    _v1_CreateUser_post_400_response:
-      example:
-        error: error
-      properties:
-        error:
-          description: The error message.
-          type: string
-      required:
-      - error
     _v1_ListCourses_get_200_response_courses_inner:
       example:
         uplimitCourseDescription: uplimitCourseDescription
@@ -107,6 +98,15 @@ components:
       - uplimitCourseDescription
       - uplimitCourseId
       - uplimitCourseSlug
+    _v1_CreateUser_post_400_response:
+      example:
+        error: error
+      properties:
+        error:
+          description: The error message.
+          type: string
+      required:
+      - error
     _v1_ListCourses_get_200_response:
       example:
         courses:
